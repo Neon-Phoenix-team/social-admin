@@ -18,4 +18,4 @@ export type GetUsersQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', users: Array<{ __typename?: 'User', id: number, userName: string, email: string, createdAt: any, profile: { __typename?: 'Profile', createdAt: any, firstName?: string | null, lastName?: string | null, id: number } }>, pagination: { __typename?: 'PaginationModel', page: number, pageSize: number, totalCount: number } } };
+export type GetUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', users: Array<{ __typename?: 'User', id: number, userName: string, email: string, createdAt: any, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null, profile: { __typename?: 'Profile', createdAt: any, firstName?: string | null, lastName?: string | null, id: number } }>, pagination: { __typename?: 'PaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number } } };

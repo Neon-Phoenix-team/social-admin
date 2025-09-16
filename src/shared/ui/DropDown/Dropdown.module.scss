@@ -5,15 +5,11 @@
   border: none;
   outline: none;
   color:inherit;
+  cursor: pointer;
 
   &:focus {
     outline: none;
     box-shadow: none;
-  }
-
-  svg {
-    width: 20px;
-    height: 20px;
   }
 }
 

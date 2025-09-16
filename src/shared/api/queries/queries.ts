@@ -30,6 +30,10 @@ export const GET_USERS_QUERY = gql`
                 userName
                 email
                 createdAt
+                userBan {
+                    reason
+                    createdAt
+                }
                 profile {
                     createdAt
                     firstName
@@ -41,6 +45,7 @@ export const GET_USERS_QUERY = gql`
                 page
                 pageSize
                 totalCount
+                pagesCount
             }
         }
     }
