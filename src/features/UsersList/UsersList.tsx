@@ -1,7 +1,7 @@
 'use client'
 
-import { GET_USERS_QUERY } from '@/shared/api/queries/queries'
-import { useQuery } from '@apollo/client/react'
+import {  GET_USERS_QUERY } from '@/shared/api/queries/queries'
+import {  useQuery } from '@apollo/client/react'
 import {
   GetUsersQuery,
   GetUsersQueryVariables,
@@ -12,12 +12,12 @@ import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { useState } from 'react'
 
 
-const labelsForDropDown = ['Delete User', 'Ban in the system', 'More information']
+
 
 export const UsersList = () => {
   const [page, setPage] = useState(1)
   const [itemsCountForPage, setItemsCountForPage] = useState(8)
-  const { data, loading, error } = useQuery<GetUsersQuery, GetUsersQueryVariables>(GET_USERS_QUERY, {
+  const { data, loading, error  } = useQuery<GetUsersQuery, GetUsersQueryVariables>(GET_USERS_QUERY, {
     variables: { pageNumber: page, pageSize: itemsCountForPage },
   })
 
@@ -52,7 +52,7 @@ export const UsersList = () => {
             <td>{user.email}</td>
             <td>{user.userName}</td>
             <td>{new Date(user.createdAt).toLocaleString()}</td>
-            <td><Dropdown item={user} labels={labelsForDropDown} /></td>
+            <td><Dropdown item={user} /></td>
           </tr>
         ))}
         </tbody>
