@@ -1,0 +1,12 @@
+{
+  "header": {
+    "loginButtons": { "loginText": "Log in", "registerText": "Sign up" }
+  },
+  "menu": {
+    "userList": "User List",
+    "statistics": "Statistics",
+    "paymentsList": "Payments List",
+    "postsList": "Posts List"
+  }
+
+}

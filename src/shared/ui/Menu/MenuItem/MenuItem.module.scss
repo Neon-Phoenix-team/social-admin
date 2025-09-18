@@ -1,0 +1,38 @@
+@use '@/shared/styles/variables.scss' as *;
+
+.link {
+  color: color($light, 100);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px;
+  cursor: pointer;
+  border: 2px solid transparent;
+
+  &.active {
+    color: color($primary, 500);
+
+  }
+
+  &:hover {
+    color: color($primary, 100);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid color($primary, 700);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    color: color($dark, 100);
+  }
+
+  & .outline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+  }
+}
