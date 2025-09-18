@@ -1,12 +1,24 @@
 {
-  "header": {
-    "loginButtons": { "loginText": "Log in", "registerText": "Sign up" }
-  },
   "menu": {
     "userList": "User List",
     "statistics": "Statistics",
     "paymentsList": "Payments List",
     "postsList": "Posts List"
+  },
+  "pagination": {
+    "show": "Show",
+    "onPage": "on page"
+  },
+  "userList": {
+    "userId": "User ID",
+    "profileLink": "Profile Link",
+    "userName": "UserName",
+    "dateAdded": "Date added",
+    "dropDown": {
+      "delete": "Delete User",
+      "ban": "Ban in the System",
+      "unban": "Unban account",
+      "info": "More information"
+    }
   }
-
 }

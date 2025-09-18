@@ -1,11 +1,15 @@
 'use client'
 
-import MoreHorizontal from '@/shared/assets/icons/components/MoreHorizontal'
+import MoreHorizontal from '@/shared/assets/icons/components/dropDown/MoreHorizontal'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import s from './Dropdown.module.scss'
 import { User } from '@/shared/api/types'
 import { useState } from 'react'
 import { ActionModal } from '@/shared/ui/Button/ActionModal'
+import { useTranslations } from 'next-intl'
+import Block from '@/shared/assets/icons/components/dropDown/Block'
+import Block1 from '@/shared/assets/icons/components/dropDown/Block1'
+import PersonRemoveOutline from '@/shared/assets/icons/components/dropDown/PersonRemoveOutline'
 
 
 export type modalType = null | 'delete' | 'ban' | 'unban'
@@ -21,6 +25,7 @@ export function Dropdown({ item}: Props) {
     setModalType(type)
   }
 
+  const t = useTranslations("userList.dropDown")
 
   return (
     <>
@@ -38,17 +43,17 @@ export function Dropdown({ item}: Props) {
         >
           <DropdownMenu.Item className={s.menuItem} onClick={() => handleOpenModal('delete')}>
             <div className={s.item}>
-              Delete User
+              <PersonRemoveOutline/>{t('delete')}
             </div>
           </DropdownMenu.Item>
           <DropdownMenu.Item className={s.menuItem} onClick={() => handleOpenModal(item.userBan ? 'unban' : 'ban')}>
             <div className={s.item}>
-              {item.userBan ? 'Unban account' : 'Ban in the system'}
+              {item.userBan ? <><Block1/>{t('unban')}</> :  <><Block/>{t('ban')}</>}
             </div>
           </DropdownMenu.Item>
           <DropdownMenu.Item className={s.menuItem}>
             <div className={s.item}>
-              More information
+              <MoreHorizontal/>{t('info')}
             </div>
           </DropdownMenu.Item>
         </DropdownMenu.Content>

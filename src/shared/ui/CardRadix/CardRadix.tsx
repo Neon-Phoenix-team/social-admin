@@ -4,7 +4,7 @@ import { Title } from '@/shared/ui/Title/Title'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as React from 'react'
 import s from './CardRadix.module.scss'
-import Close from '@/shared/assets/icons/components/Close'
+import Close from '@/shared/assets/icons/common/Close'
 import { Button } from '@/shared/ui/Button/Button'
 
 export default function CardRadix({

@@ -7,7 +7,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react'
 import { Title } from '@/shared/ui/Title/Title'
 import { createPortal } from 'react-dom'
 import { clsx } from 'clsx'
-import Close from '@/shared/assets/icons/components/Close'
+import Close from '@/shared/assets/icons/common/Close'
 
 export type CardTextType = {
   open: boolean

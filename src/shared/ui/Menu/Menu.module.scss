@@ -6,7 +6,7 @@
   font-size: 14px;
   line-height: 24px;
   padding: 60px 48px 48px;
-  width: 220px;
+  min-width: 220px;
   border-right: 1px solid color($dark, 300);
   display: flex;
 }
