@@ -5,6 +5,13 @@
     "paymentsList": "Payments List",
     "postsList": "Posts List"
   },
+  "authForm": {
+    "text": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "btnText": "Sign in",
+    "placeholder": "Input your password"
+  },
   "pagination": {
     "show": "Show",
     "onPage": "on page"
