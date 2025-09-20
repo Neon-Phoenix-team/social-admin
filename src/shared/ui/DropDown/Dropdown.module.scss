@@ -4,7 +4,7 @@
   background: transparent;
   border: none;
   outline: none;
-  color:inherit;
+  color: inherit;
   cursor: pointer;
 
   &:focus {
@@ -49,8 +49,24 @@
     margin-right: 10px;
   }
 }
+
 .item {
   width: 100%;
   display: flex;
   align-items: center;
+}
+
+.buttons {
+  margin-top: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn{
+  min-width: 130px;
+}
+
+.input{
+  width: 100%;
 }

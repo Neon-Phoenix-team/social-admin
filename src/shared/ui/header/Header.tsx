@@ -2,11 +2,11 @@
 
 import styles from './Header.module.scss'
 import { SelectBox } from '@/shared/ui/Select/SelectBox'
-import { useLocale, useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import { usePathname, useRouter } from '@/shared/i18n/navigation'
 import { SelectOption } from '@/shared/ui/Select/SelectType'
-import FlagRussia from '@/shared/assets/icons/components/FlagRussia'
-import FlagUnitedKingdom from '@/shared/assets/icons/components/FlagUnitedKingdom'
+import FlagRussia from '@/shared/assets/icons/common/FlagRussia'
+import FlagUnitedKingdom from '@/shared/assets/icons/common/FlagUnitedKingdom'
 
 
 export const Header = () => {

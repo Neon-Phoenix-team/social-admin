@@ -23,10 +23,10 @@ export const MenuItem = (props: MenuItemPropsType) => {
         href={props.path}
         className={isActive ? s.link + ' ' + s.active : s.link}
       >
-        <span className={s.outline}>
-          {isActive ? props.iconActive : props.icon}
-          {props.name}
-        </span>
+        <div className={s.outline}>
+          <span>{props.icon}</span>
+            <span>{props.name}</span>
+        </div>
       </Link>
     </li>
   )
