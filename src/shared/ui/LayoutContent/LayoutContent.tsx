@@ -6,6 +6,8 @@ import { getMenuItems } from '@/shared/ui/Menu/menuData'
 import { useTranslations } from 'next-intl'
 import { Header } from '@/shared/ui/header/Header'
 import { Menu } from '@/shared/ui/Menu/Menu'
+import {useReactiveVar} from "@apollo/client/react";
+import {isAdminVar} from "@/shared/api/client";
 
 
 type Props = {
@@ -20,12 +22,12 @@ export const LayoutContent = ({ children }: Props) => {
   const menuItems = getMenuItems({
     t
   })
-
+    const isAdmin = useReactiveVar(isAdminVar);
   return (
     <>
       <Header />
       <div className="scroll-container">
-         <Menu items={menuItems} />
+          {isAdmin && <Menu items={menuItems} />}
         <main className="content">{children}</main>
       </div>
       {/*<ErrorAlert />*/}
