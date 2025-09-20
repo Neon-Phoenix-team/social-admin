@@ -1,0 +1,56 @@
+@use '@/shared/styles/variables' as *;
+
+.menuTrigger {
+  background: transparent;
+  border: none;
+  outline: none;
+  color:inherit;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.menuContent {
+  min-width: 160px;
+  background-color: color($dark, 500);
+  border: 1px solid color($dark, 100);
+  padding: 0.25rem;
+  color: color($light, 100);
+  box-shadow: 0 4px 14px color($dark, 700);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  font-size: 14px;
+  cursor: pointer;
+
+  button {
+    color: white;
+    padding: 0;
+  }
+
+  &:hover {
+    background-color: color($dark, 300);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: color($dark, 300);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+}
+.item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}

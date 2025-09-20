@@ -1,0 +1,14 @@
+{
+  "header": {
+    "loginButtons": {
+      "loginText": "Войти",
+      "registerText": "Регистрация"
+    }
+  },
+  "menu": {
+    "userList": "Пользователи",
+    "statistics": "Статистика",
+    "paymentsList": "Платежи",
+    "postsList": "Посты"
+  }
+}
