@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client-integration-nextjs'
-import { HttpLink } from '@apollo/client'
+import {HttpLink, makeVar} from '@apollo/client'
 
-
+export const isAdminVar = makeVar<boolean>(false);
 export function  client() {
   return new ApolloClient({
     link: new HttpLink({
