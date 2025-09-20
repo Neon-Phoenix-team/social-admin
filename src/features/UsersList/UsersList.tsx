@@ -12,12 +12,14 @@ import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Block from '@/shared/assets/icons/components/dropDown/Block'
+import {UserSearchInput} from "@/features/Search/UserSearchInput";
 
 export const UsersList = () => {
   const [page, setPage] = useState(1)
+  const [search, setSearch] = useState('')
   const [itemsCountForPage, setItemsCountForPage] = useState(8)
   const { data, loading } = useQuery<GetUsersQuery, GetUsersQueryVariables>(GET_USERS_QUERY, {
-    variables: { pageNumber: page, pageSize: itemsCountForPage },
+    variables: { pageNumber: page, pageSize: itemsCountForPage, searchTerm: search || undefined,},
   })
 
   const t = useTranslations('userList')
@@ -32,6 +34,13 @@ export const UsersList = () => {
 
   return (
     <div>
+      <UserSearchInput
+          onSearch={(value) => {
+            setPage(1) // сброс на первую страницу
+            setSearch(value)
+          }}
+          placeholder={t('searchPlaceholder')}
+      />
       <table className={s.usersTable}>
         <thead>
         <tr>

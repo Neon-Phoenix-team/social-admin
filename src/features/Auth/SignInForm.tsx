@@ -11,6 +11,7 @@ import {Input} from "@/shared/ui/Input/Input";
 import {Button} from "@/shared/ui/Button/Button";
 import {isAdminVar} from "@/shared/api/client";
 import {useTranslations} from "next-intl";
+import {useReactiveVar} from "@apollo/client/react";
 
 // Zod схема
 const schema = z.object({
@@ -25,8 +26,9 @@ const HARDCODED_PASSWORD = "admin";
 
 export const SignInForm = () => {
     const router = useRouter();
+
     // const [showPassword, setShowPassword] = useState(false);
-const t=useTranslations("authForm")
+    const t = useTranslations("authForm")
     const {
         register,
         handleSubmit,
@@ -36,7 +38,8 @@ const t=useTranslations("authForm")
         resolver: zodResolver(schema),
         mode: "onChange",
     });
-
+    const isAdmin = useReactiveVar(isAdminVar);
+    if (isAdmin) return null
     const onSubmit = async (data: FormValues) => {
         if (
             data.email === HARDCODED_EMAIL &&
