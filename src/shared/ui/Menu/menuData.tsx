@@ -1,10 +1,13 @@
 import { useTranslations } from 'next-intl'
 import { MenuItemPropsType } from './MenuItem/MenuItem'
+import Account from '@/shared/assets/icons/components/menu/Account'
+import TrendingUp from '@/shared/assets/icons/components/menu/TrendingUp'
+import PaymentsIcon from '@/shared/assets/icons/components/menu/PaymentsIcon'
+import ImageOutline from '@/shared/assets/icons/components/menu/ImageOutline'
 
 export type Translate = ReturnType<typeof useTranslations>
 
 type Props = {
-  // userId: number | undefined
   t: Translate
 }
 
@@ -13,26 +16,22 @@ export function getMenuItems({ t }: Props) {
     {
       name: t('userList'),
       path: '/userList',
-      // icon: <HomeOutline />,
-      // iconActive: <Home />,
+      icon: <Account />,
     },
     {
       name: t('statistics'),
       path: '/statistics',
-      // icon: <PlusSquareOutline />,
-      // iconActive: <PlusSquare />,
+      icon: <TrendingUp />,
     },
     {
       name: t('paymentsList'),
       path: `/paymentsList`,
-      // icon: <PersonOutline />,
-      // iconActive: <Person />,
+      icon: <PaymentsIcon />,
     },
     {
       name: t('postsList'),
       path: '/postsList',
-      // icon: <MessageCircleOutline />,
-      // iconActive: <MessageCircle />,
+      icon: <ImageOutline />,
     },
 
   ]

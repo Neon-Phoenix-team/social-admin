@@ -16,9 +16,6 @@ export const Menu = ({ items }: { items: MenuItemPropsType[] }) => {
             />
           )
         })}
-        {/*<li className={s.last}>*/}
-        {/*  <LogOut />*/}
-        {/*</li>*/}
       </ul>
     </aside>
   )

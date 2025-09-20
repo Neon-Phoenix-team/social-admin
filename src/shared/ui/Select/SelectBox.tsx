@@ -5,7 +5,7 @@ import { FieldError } from 'react-hook-form'
 import * as Select from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 import s from './SelectBox.module.scss'
-import { ArrowIosDown } from '@/shared/assets/icons/select/ArrowIosDown'
+import { ArrowIosDown } from '@/shared/assets/icons/components/select/ArrowIosDown'
 import { SelectOption } from '@/shared/ui/Select/SelectType'
 
 

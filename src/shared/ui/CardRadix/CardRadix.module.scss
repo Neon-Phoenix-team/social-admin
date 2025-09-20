@@ -1,0 +1,44 @@
+@use '@/shared/styles/variables' as *;
+
+.DialogOverlay {
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  position: fixed;
+  inset: 0;
+}
+
+.DialogContent {
+  position: fixed;
+  min-width: 288px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: color($dark, 300);
+  margin: 0 auto;
+  color: color($light, 100);
+  max-width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color($dark, 100);
+  pointer-events: auto;
+}
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 24px;
+  gap: 18px;
+}
+.title {
+	padding: 12px 24px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid color($dark, 100);
+	width: 100%;
+  & button {
+    color: color($light, 100);
+  }
+}
