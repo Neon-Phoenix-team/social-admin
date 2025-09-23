@@ -61,3 +61,8 @@ export const UNBAN_USER = gql`
         unbanUser(userId:$userId),
         
     }`
+
+export const REMOVE_USER = gql`
+    mutation removeUser($userId: Int!) {
+        removeUser(userId:$userId)
+}`
