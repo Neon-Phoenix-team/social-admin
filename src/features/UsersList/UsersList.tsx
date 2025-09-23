@@ -29,35 +29,34 @@ export const UsersList = () => {
 
   if (loading) return <div>Loading...</div>
 
-
   return (
     <div>
       <table className={s.usersTable}>
         <thead>
-        <tr>
-          <th>{t('userId')}</th>
-          <th>{t('profileLink')}</th>
-          <th>{t('userName')}</th>
-          <th>{t('dateAdded')}</th>
-          <th></th>
-        </tr>
+          <tr>
+            <th>{t('userId')}</th>
+            <th>{t('profileLink')}</th>
+            <th>{t('userName')}</th>
+            <th>{t('dateAdded')}</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-        {data?.getUsers.users.map(user => (
-          <tr key={user.id}>
-            <td className={s.ban}>
-              <div className={s.cell}>
-                {user.userBan ? <Block className={s.icon} /> : <span className={s.empty} />}
-                <span>{user.id}</span>
-              </div>
-            </td>
-            <td>{user.email}
-            </td>
-            <td>{user.userName}</td>
-            <td>{new Date(user.createdAt).toLocaleString()}</td>
-            <td><Dropdown item={user} /></td>
-          </tr>
-        ))}
+          {data?.getUsers.users.map(user => (
+            <tr key={user.id}>
+              <td className={s.ban}>
+                <div className={s.cell}>
+                  {user.userBan ? <Block className={s.icon} /> : <span className={s.empty} />}
+                  <span>{user.id}</span>
+                </div>
+              </td>
+              <td>{user.email}
+              </td>
+              <td>{user.userName}</td>
+              <td>{new Date(user.createdAt).toLocaleString()}</td>
+              <td><Dropdown item={user} /></td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <Pagination
