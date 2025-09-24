@@ -2,7 +2,10 @@
 
 import { GET_USERS_QUERY } from '@/shared/api/queries/queries'
 import { useQuery } from '@apollo/client/react'
-import { GetUsersQuery, GetUsersQueryVariables } from '@/shared/api/queries/queries.generated'
+import {
+  GetUsersQuery,
+  GetUsersQueryVariables,
+} from '@/shared/api/queries/queries.generated'
 import s from './UsersList.module.scss'
 import { Dropdown } from '@/shared/ui/DropDown/DropDown'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
@@ -92,21 +95,21 @@ export const UsersList = () => {
         </tr>
         </thead>
         <tbody>
-        {data?.getUsers.users.map(user => (
-          <tr key={user.id}>
-            <td className={s.ban}>
-              <div className={s.cell}>
-                {user.userBan ? <Block className={s.icon} /> : <span className={s.empty} />}
-                <span>{user.id}</span>
-              </div>
-            </td>
-            <td>{user.email}
-            </td>
-            <td>{user.userName}</td>
-            <td>{new Date(user.createdAt).toLocaleString()}</td>
-            <td><Dropdown item={user} /></td>
-          </tr>
-        ))}
+          {data?.getUsers.users.map(user => (
+            <tr key={user.id}>
+              <td className={s.ban}>
+                <div className={s.cell}>
+                  {user.userBan ? <Block className={s.icon} /> : <span className={s.empty} />}
+                  <span>{user.id}</span>
+                </div>
+              </td>
+              <td>{user.email}
+              </td>
+              <td>{user.userName}</td>
+              <td>{new Date(user.createdAt).toLocaleString()}</td>
+              <td><Dropdown item={user} /></td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <Pagination
