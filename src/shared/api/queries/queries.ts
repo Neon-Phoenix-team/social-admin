@@ -65,7 +65,7 @@ export const UNBAN_USER = gql`
 
 export const GET_POSTS_QUERY = gql`
   query GetPosts(
-    $endCursorPostId: Int = 1111
+    $endCursorPostId: Int = 3324
     $searchTerm: String
     $pageSize: Int = 10
     $sortBy: String = "createdAt"
@@ -96,7 +96,7 @@ export const GET_POSTS_QUERY = gql`
           avatars {
             url
             width
-            height            
+            height
           }
         }
         userBan {
