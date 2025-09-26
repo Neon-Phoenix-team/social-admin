@@ -1,0 +1,14 @@
+@use '../../shared/styles/variables' as *;
+.post {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 12px;
+}
+.img {
+  width: 100%;
+}
+.time {
+  font-size: 12px;
+  color: color($light, 900);
+  margin: 5px 0;
+}
