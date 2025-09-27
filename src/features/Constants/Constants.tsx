@@ -4,23 +4,23 @@ import { TabItem } from '@/shared/ui/Tabs/Tabs'
 export function getSettingsSections(t: Translate): TabItem[] {
   return [
     {
-      id: 'generalSettings',
-      label: t('generalSettings'),
+      id: 'uploadedPhotos',
+      label: t('uploadedPhotos'),
       content: <UploadedPhotos />,
     },
     {
-      id: 'devices',
-      label: t('devices'),
+      id: 'payments',
+      label: t('payments'),
       content: <Payments />,
     },
     {
-      id: 'accountManagement',
-      label: t('accountManagement'),
+      id: 'followers',
+      label: t('followers'),
       content: <Followers />,
     },
     {
-      id: 'myPayments',
-      label: t('myPayments'),
+      id: 'following',
+      label: t('following'),
       content: <Following />,
     },
   ]
