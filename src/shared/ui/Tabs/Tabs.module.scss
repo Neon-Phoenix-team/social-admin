@@ -1,5 +1,5 @@
-@use '@/shared/styles/global/typography.scss' as *;
-@use '@/shared/styles/global/variables.scss' as *;
+@use '@/shared/styles/variables.scss' as *;
+@use '@/shared/styles/typography.scss' as *;
 
 .tabsRoot {
   display: flex;
