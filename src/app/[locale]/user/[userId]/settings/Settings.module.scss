@@ -1,0 +1,63 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/typography' as *;
+
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 36px 0 24px;
+}
+
+.ButtonWrapper {
+  display: flex;
+  gap: 12px;
+  padding-top: 18px;
+  @include fontStyle($size: 14px, $weight: 500, $color: color($light, 100), $line-height: 170%, $style: normal);
+}
+
+
+.infoWrapper {
+  display: flex;
+  max-width: 360px;
+  flex-direction: column;
+  padding: 24px 0 30px 24px;
+
+  .photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  .head {
+    display: flex;
+    gap: 24px;
+    padding-bottom: 20px;
+
+    .nameWrapper {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .lastName {
+        @include fontStyle($font-family: "Inter", $size: 20px, $weight: 700, $color: color($light, 100), $line-height: 1.8);
+      }
+
+      .userName {
+        @include fontStyle($font-family: "Inter", $size: 14px, $color: color($light, 100), $line-height: 1.71429);
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+      }
+    }
+  }
+  .detailsWrapper {
+    display: flex;
+    gap: 12px;
+    .details {
+      width: 100%;
+      max-width: 172px;
+      .label{
+        @include fontStyle($size: 14px, $color: #8d9094, $line-height: 1.71429);
+      }
+    }
+  }
+}
