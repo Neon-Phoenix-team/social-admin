@@ -14,10 +14,11 @@ import { useTranslations } from 'next-intl'
 import Block from '@/shared/assets/icons/components/dropDown/Block'
 import Filter from '@/shared/assets/icons/common/Filter'
 import { Button } from '@/shared/ui/Button/Button'
-import { SortConfigType, SortDirection } from '@/shared/api/types'
+import {SortDirection } from '@/shared/api/types'
 import SortAsc from '@/shared/assets/icons/common/SortAsc'
 import SortDesc from '@/shared/assets/icons/common/SortDesc'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
+import { SortConfigType } from '@/shared/api/types'
 
 
 export const UsersList = () => {
