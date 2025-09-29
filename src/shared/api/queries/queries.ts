@@ -109,3 +109,33 @@ export const GET_POSTS_QUERY = gql`
     }
   }
 `
+export const POST_ADDED_SUBSCRIPTION = gql`
+  subscription PostAdded {
+    postAdded {
+      id
+      description
+      createdAt
+      updatedAt
+      ownerId
+      images {
+        id
+        url
+      }
+      postOwner {
+        id
+        userName
+        firstName
+        lastName
+        avatars {
+          url
+          width
+          height
+        }
+      }
+      userBan {
+        reason
+        createdAt
+      }
+    }
+  }
+`

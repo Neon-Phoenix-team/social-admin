@@ -1,17 +1,29 @@
 'use client'
-import { GET_POSTS_QUERY } from '@/shared/api/queries/queries'
+import {
+  GET_POSTS_QUERY,
+  POST_ADDED_SUBSCRIPTION,
+} from '@/shared/api/queries/queries'
 import {
   GetPostsQuery,
   GetPostsQueryVariables,
 } from '@/shared/api/queries/queries.generated'
+import Block from '@/shared/assets/icons/components/dropDown/Block'
+import Block1 from '@/shared/assets/icons/components/dropDown/Block1'
+import { ActionModal } from '@/shared/ui/Button/ActionModal'
+import { modalType } from '@/shared/ui/DropDown/DropDown'
 import { Input } from '@/shared/ui/Input/Input'
 import { User } from '@/shared/ui/User/User'
 import { formatDateLocale } from '@/utils/formatDate'
-import { useQuery } from '@apollo/client/react'
+import { useQuery, useSubscription } from '@apollo/client/react'
 import { useEffect, useState } from 'react'
 import s from './Posts.module.scss'
 
 export default function Posts() {
+  const [modalType, setModalType] = useState<modalType>(null)
+  const handleOpenModal = (type: 'ban' | 'unban') => {
+    setModalType(type)
+  }
+
   const [search, setSearch] = useState('')
   const [fetching, setFetching] = useState(true)
   const PAGE_SIZE = 8
@@ -50,6 +62,20 @@ export default function Posts() {
   }
   const [allPosts, setAllPosts] = useState<any[]>([])
 
+  const { data: subscriptionData } = useSubscription<any>(
+    POST_ADDED_SUBSCRIPTION
+  )
+
+  useEffect(() => {
+    if (subscriptionData?.postAdded) {
+      setAllPosts(prev => {
+        const exists = prev.some(p => p.id === subscriptionData.postAdded.id)
+        if (exists) return prev
+        return [subscriptionData.postAdded, ...prev] 
+      })
+    }
+  }, [subscriptionData])
+
   useEffect(() => {
     if (data?.getPosts.items) {
       setAllPosts(prev => {
@@ -71,7 +97,7 @@ export default function Posts() {
         variables: {
           searchTerm: search,
           // pageSize: 10,
-          endCursorPostId: endCursor,
+          endCursorPostId: allPosts[allPosts.length - 1]?.id,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
           if (!fetchMoreResult) return prev
@@ -87,19 +113,10 @@ export default function Posts() {
             },
           }
         },
-      }).then(result => {
-        // debugger
-        const items = result.data?.getPosts.items
-
-        setFetching(false)
-        items?.length
-          ? setEndCursor(items[items?.length - 1].id)
-          : setEndCursor(prev => result.data?.getPosts.totalCount ?? prev)
-      })
+      }).then(() => setFetching(false))
     }
   }, [fetching, search])
-  console.log(data)
-  console.log(allPosts)
+
   return (
     <>
       <Input
@@ -110,11 +127,6 @@ export default function Posts() {
           setAllPosts([])
           refetch({
             searchTerm: value,
-            // pageSize: 10,
-            endCursorPostId: endCursor,
-          }).then(res => {
-            const items = res.data?.getPosts.items
-            setEndCursor(res.data?.getPosts.totalCount! - 1)
           })
         }}
       />
@@ -123,16 +135,37 @@ export default function Posts() {
           <div key={post.id}>
             Post ID: {post.id}, Created At:{' '}
             <img src={post.images[0].url} alt="#" className={s.img} />
-            <User
-              url={post.postOwner.avatars.url}
-              userName={post.postOwner.userName}
-              userId={post.ownerId}
-              locale={locale}
-            />
+            <div className={s.postHeader}>
+              <User
+                url={post.postOwner.avatars.url}
+                userName={post.postOwner.userName}
+                userId={post.ownerId}
+                locale={locale}
+                style={{ marginRight: 'auto' }}
+              />
+              {post.userBan ? (
+                <Block1
+                  onClick={() => handleOpenModal('unban')}
+                  style={{ cursor: 'pointer' }}
+                />
+              ) : (
+                <Block
+                  onClick={() => handleOpenModal('ban')}
+                  style={{ cursor: 'pointer' }}
+                />
+              )}
+            </div>
             <p className={s.time}>
               {formatDateLocale(post.createdAt, locale as 'en' | 'ru')}
             </p>
             <p>{post.description}</p>
+            <ActionModal
+              modalType={modalType}
+              userId={post.postOwner.id}
+              isBan={!!post.userBan}
+              userName={post.postOwner.userName}
+              onClose={setModalType}
+            />
           </div>
         ))}
       </div>
