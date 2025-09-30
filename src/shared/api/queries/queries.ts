@@ -66,3 +66,84 @@ export const REMOVE_USER = gql`
     mutation removeUser($userId: Int!) {
         removeUser(userId:$userId)
 }`
+
+export const GET_USER_QUERY = gql`
+    query GetUser($userId: Int!) {
+        getUser(userId: $userId) {
+            id
+            userName
+            email
+            createdAt
+            profile {
+                id
+                userName
+                firstName
+                lastName
+                city
+                country
+                region
+                dateOfBirth
+                aboutMe
+                createdAt
+                avatars {
+                    url
+                    width
+                    height
+                    fileSize
+                }
+            }
+            userBan {
+                reason
+                createdAt
+            }
+        }
+    }
+`
+export const GET_POSTS_BY_USER_QUERY = gql`
+    query getPostsByUser ($userId:Int!, $endCursorId:Int){
+        getPostsByUser(userId:$userId, endCursorId: $endCursorId){
+            pagesCount,
+            pageSize,
+            totalCount,
+            items{
+                id,
+                createdAt,
+                url,
+                width,
+                height,
+                fileSize
+            }
+        }
+    }
+`
+export const GET_FOLLOWERS_QUERY = gql`
+    query getFollowers(
+        $pageNumber: Int = 1
+        $pageSize: Int = 10
+        $sortBy: String = "createdAt"
+        $sortDirection: SortDirection = desc
+        $userId:Int!
+    ){
+        getFollowers(
+            pageNumber:$pageNumber
+            pageSize: $pageSize
+            sortBy :$sortBy
+            sortDirection: $sortDirection
+            userId: $userId
+        ){
+            page
+            pageSize
+            totalCount
+            pagesCount
+            items{
+                id
+                userId
+                userName
+                firstName
+                lastName
+                createdAt
+            }
+
+        }
+    }
+`

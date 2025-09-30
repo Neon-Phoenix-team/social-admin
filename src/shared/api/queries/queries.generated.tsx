@@ -38,4 +38,32 @@ export type UnbanUserMutation = { __typename?: 'Mutation', unbanUser: boolean };
 export type RemoveUserMutationVariables = Types.Exact<{
   userId: Types.Scalars['Int']['input'];
 }>;
+
+
 export type RemoveUserMutation = { __typename?: 'Mutation', removeUser: boolean };
+
+export type GetUserQueryVariables = Types.Exact<{
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetUserQuery = { __typename?: 'Query', getUser: { __typename?: 'User', id: number, userName: string, email: string, createdAt: any, profile: { __typename?: 'Profile', id: number, userName?: string | null, firstName?: string | null, lastName?: string | null, city?: string | null, country?: string | null, region?: string | null, dateOfBirth?: any | null, aboutMe?: string | null, createdAt: any, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null } };
+
+export type GetPostsByUserQueryVariables = Types.Exact<{
+  userId: Types.Scalars['Int']['input'];
+  endCursorId?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+}>;
+
+
+export type GetPostsByUserQuery = { __typename?: 'Query', getPostsByUser: { __typename?: 'PostsByUserModel', pagesCount: number, pageSize: number, totalCount: number, items?: Array<{ __typename?: 'ImagePost', id?: number | null, createdAt?: any | null, url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null } };
+
+export type GetFollowersQueryVariables = Types.Exact<{
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetFollowersQuery = { __typename?: 'Query', getFollowers: { __typename?: 'FollowPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'Follow', id: number, userId: number, userName?: string | null, firstName?: string | null, lastName?: string | null, createdAt: any }> } };
