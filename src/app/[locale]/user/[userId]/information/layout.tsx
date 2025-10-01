@@ -32,12 +32,12 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
 
   if (loading || !userId) return <div><LinearProgress/></div>
 
-  const user = data?.getUser
+   const user = data?.getUser
   if (!user) return <div>{t("userNotFound")}</div>
 
 
   const onValueChange = (id: string) => {
-    router.push(`/${params.locale}/user/${userId}/settings/${id}`)
+    router.push(`/${params.locale}/user/${userId}/information/${id}`)
   }
   const pathSegments = pathname.split('/')
   const value = pathSegments[pathSegments.length - 1]
@@ -50,7 +50,7 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
 
 
   return (
-    <>
+    <div className={s.container}>
       <Button variant={'text'} onClick={handleClick}>
         <div className={s.ButtonWrapper}>
           <ArrowBack />
@@ -92,6 +92,6 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
       />
 
       <div className={s.content}>{children}</div>
-    </>
+    </div>
   )
 }
