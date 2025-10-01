@@ -67,3 +67,25 @@ export type GetFollowersQueryVariables = Types.Exact<{
 
 
 export type GetFollowersQuery = { __typename?: 'Query', getFollowers: { __typename?: 'FollowPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'Follow', id: number, userId: number, userName?: string | null, firstName?: string | null, lastName?: string | null, createdAt: any }> } };
+
+export type GetFollowingQueryVariables = Types.Exact<{
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetFollowingQuery = { __typename?: 'Query', getFollowing: { __typename?: 'FollowPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'Follow', id: number, userId: number, userName?: string | null, firstName?: string | null, lastName?: string | null, createdAt: any }> } };
+
+export type GetPaymentsByUserQueryVariables = Types.Exact<{
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetPaymentsByUserQuery = { __typename?: 'Query', getPaymentsByUser: { __typename?: 'PaymentPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'SubscriptionByPaymentModel', id: string, businessAccountId: number, status: Types.StatusSubscriptionType, dateOfPayment?: any | null, startDate?: any | null, endDate?: any | null, type: Types.SubscriptionType, price: number, paymentType?: Types.PaymentMethod | null, payments: Array<{ __typename?: 'Payment', id?: number | null, userId?: number | null, paymentMethod?: Types.PaymentMethod | null, amount?: number | null, currency?: Types.CurrencyType | null, createdAt?: any | null, endDate?: any | null, type?: Types.SubscriptionType | null }> }> } };

@@ -147,3 +147,80 @@ export const GET_FOLLOWERS_QUERY = gql`
         }
     }
 `
+
+export const GET_FOLLOWING_QUERY = gql`
+    query getFollowing(
+        $pageNumber: Int = 1
+        $pageSize: Int = 10
+        $sortBy: String = "createdAt"
+        $sortDirection: SortDirection = desc
+        $userId:Int!
+    ){
+        getFollowing(
+            pageNumber:$pageNumber
+            pageSize: $pageSize
+            sortBy :$sortBy
+            sortDirection: $sortDirection
+            userId: $userId
+        ){
+            page
+            pageSize
+            totalCount
+            pagesCount
+            items{
+                id
+                userId
+                userName
+                firstName
+                lastName
+                createdAt
+            }
+
+        }
+    }
+`
+
+export const GET_PAYMENTS_BY_USER_QUERY = gql`
+    query GetPaymentsByUser(
+        $pageNumber: Int = 1
+        $pageSize: Int = 10
+        $sortBy: String = "createdAt"
+        $sortDirection: SortDirection = desc
+        $userId:Int!
+    ){
+        getPaymentsByUser(
+            pageNumber:$pageNumber
+            pageSize: $pageSize
+            sortBy :$sortBy
+            sortDirection: $sortDirection
+            userId: $userId
+        ){
+            page
+            pageSize
+            totalCount
+            pagesCount
+            items{
+                id
+                businessAccountId
+                status
+                dateOfPayment
+                startDate
+                endDate
+                type
+                price
+                paymentType
+                payments{
+                    id
+                    userId
+                    paymentMethod
+                    amount
+                    currency
+                    createdAt
+                    endDate
+                    type
+
+                }
+            }
+        }
+    }
+`
