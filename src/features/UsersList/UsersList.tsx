@@ -18,8 +18,11 @@ import {SortDirection } from '@/shared/api/types'
 import SortAsc from '@/shared/assets/icons/common/SortAsc'
 import SortDesc from '@/shared/assets/icons/common/SortDesc'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
-import { SortConfigType } from '@/shared/api/types'
 
+export type SortConfigType = {
+  sortBy: string | null;
+  sortDirection: SortDirection | null;
+}
 
 export const UsersList = () => {
   const [page, setPage] = useState(1)
