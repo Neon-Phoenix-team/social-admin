@@ -1,6 +1,11 @@
 @use '@/shared/styles/variables' as *;
 @use '@/shared/styles/typography' as *;
 
+.container{
+  max-width: 1060px;
+  margin-left: 240px;
+
+}
 .nav {
   width: 100%;
   display: flex;
