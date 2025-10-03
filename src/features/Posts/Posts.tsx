@@ -3,6 +3,7 @@ import {
   GET_POSTS_QUERY,
   POST_ADDED_SUBSCRIPTION,
 } from '@/shared/api/queries/queries'
+
 import {
   GetPostsQuery,
   GetPostsQueryVariables,
@@ -26,56 +27,47 @@ export default function Posts() {
 
   const [search, setSearch] = useState('')
   const [fetching, setFetching] = useState(true)
-  const PAGE_SIZE = 8
   // const locale = useLocale()
   const locale = 'en'
   const { data, fetchMore, refetch } = useQuery<
     GetPostsQuery,
     GetPostsQueryVariables
-  >(GET_POSTS_QUERY, {
-    // variables: {
-    //   searchTerm: search,
-    //   pageSize: 10,
-    //   endCursorPostId: endCursor,
-    // },
-    notifyOnNetworkStatusChange: true,
-  })
-  const [endCursor, setEndCursor] = useState(
-    data?.getPosts.totalCount! - 1 || 3324
-  )
+  >(GET_POSTS_QUERY)
 
-  // const totalCount = data?.getPosts.items[7].id ?? 1111
   const scrollContainer = document.querySelector('.scroll-container')
 
+  const [allPosts, setAllPosts] = useState<any[]>([])
   const onScroll = (e: Event) => {
-    const target = e.target as HTMLElement
-    const scrolledToBottom =
-      // window.innerHeight + target.scrollTop >= target.scrollHeight - 100
-      target.scrollHeight - (target.scrollTop + window.innerHeight) < 100
+    const { scrollHeight, scrollTop } = e.target as HTMLElement
 
-    if (scrolledToBottom) {
+    if (scrollHeight - (scrollTop + window.innerHeight) < 100) {
       setFetching(true)
-      setEndCursor(prev =>
-        prev - PAGE_SIZE > PAGE_SIZE ? prev - PAGE_SIZE : prev
-      )
     }
   }
-  const [allPosts, setAllPosts] = useState<any[]>([])
+
+  const searchHandler = (value: string) => {
+    setSearch(value)
+    setAllPosts([])
+    refetch({
+      searchTerm: value,
+    })
+  }
 
   const { data: subscriptionData } = useSubscription<any>(
     POST_ADDED_SUBSCRIPTION
   )
-
+//subscription
   useEffect(() => {
     if (subscriptionData?.postAdded) {
       setAllPosts(prev => {
         const exists = prev.some(p => p.id === subscriptionData.postAdded.id)
         if (exists) return prev
-        return [subscriptionData.postAdded, ...prev] 
+        return [subscriptionData.postAdded, ...prev]
       })
     }
   }, [subscriptionData])
 
+//filter dublicate posts
   useEffect(() => {
     if (data?.getPosts.items) {
       setAllPosts(prev => {
@@ -86,17 +78,20 @@ export default function Posts() {
       })
     }
   }, [data])
+
+//scrollEvent
   useEffect(() => {
     if (!scrollContainer) return
     scrollContainer.addEventListener('scroll', onScroll)
     return () => scrollContainer.removeEventListener('scroll', onScroll)
   }, [scrollContainer])
+
+  //fetchMore
   useEffect(() => {
     if (fetching) {
       fetchMore({
         variables: {
           searchTerm: search,
-          // pageSize: 10,
           endCursorPostId: allPosts[allPosts.length - 1]?.id,
         },
         updateQuery: (prev, { fetchMoreResult }) => {
@@ -119,17 +114,13 @@ export default function Posts() {
 
   return (
     <>
-      <Input
-        type="searchType"
-        placeholder="Search"
-        onChangeText={value => {
-          setSearch(value)
-          setAllPosts([])
-          refetch({
-            searchTerm: value,
-          })
-        }}
-      />
+      <div className={s.inputWrapper}>
+        <Input
+          type="searchType"
+          placeholder="Search"
+          onChangeText={searchHandler}
+        />
+      </div>
       <div className={s.post}>
         {allPosts.map(post => (
           <div key={post.id}>
@@ -137,7 +128,7 @@ export default function Posts() {
             <img src={post.images[0].url} alt="#" className={s.img} />
             <div className={s.postHeader}>
               <User
-                url={post.postOwner.avatars.url}
+                url={post.postOwner.avatars?.[1]?.url}
                 userName={post.postOwner.userName}
                 userId={post.ownerId}
                 locale={locale}

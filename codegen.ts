@@ -4,7 +4,7 @@ const config: CodegenConfig = {
   schema: 'https://inctagram.work/api/v1/graphql',
   documents: ['src/shared/api/queries/**/*.ts'],
   generates: {
-    'src/shared/api/types.ts/': {
+    'src/shared/api/types.ts': {
       plugins: ['typescript'],
     },
     'src/': {

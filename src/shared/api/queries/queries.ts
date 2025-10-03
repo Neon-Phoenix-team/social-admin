@@ -65,9 +65,9 @@ export const UNBAN_USER = gql`
 
 export const GET_POSTS_QUERY = gql`
   query GetPosts(
-    $endCursorPostId: Int = 3324
+    $endCursorPostId: Int
     $searchTerm: String
-    $pageSize: Int = 10
+    $pageSize: Int = 9
     $sortBy: String = "createdAt"
     $sortDirection: SortDirection = desc
   ) {
