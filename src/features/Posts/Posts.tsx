@@ -32,7 +32,11 @@ export default function Posts() {
   const { data, fetchMore, refetch } = useQuery<
     GetPostsQuery,
     GetPostsQueryVariables
-  >(GET_POSTS_QUERY)
+  >(GET_POSTS_QUERY, {
+    variables: {
+      pageSize: 19,
+    },
+  })
 
   const scrollContainer = document.querySelector('.scroll-container')
 
@@ -56,7 +60,7 @@ export default function Posts() {
   const { data: subscriptionData } = useSubscription<any>(
     POST_ADDED_SUBSCRIPTION
   )
-//subscription
+  //subscription
   useEffect(() => {
     if (subscriptionData?.postAdded) {
       setAllPosts(prev => {
@@ -67,7 +71,7 @@ export default function Posts() {
     }
   }, [subscriptionData])
 
-//filter dublicate posts
+  //filter dublicate posts
   useEffect(() => {
     if (data?.getPosts.items) {
       setAllPosts(prev => {
@@ -79,7 +83,7 @@ export default function Posts() {
     }
   }, [data])
 
-//scrollEvent
+  //scrollEvent
   useEffect(() => {
     if (!scrollContainer) return
     scrollContainer.addEventListener('scroll', onScroll)
@@ -122,43 +126,45 @@ export default function Posts() {
         />
       </div>
       <div className={s.post}>
-        {allPosts.map(post => (
-          <div key={post.id}>
-            Post ID: {post.id}, Created At:{' '}
-            <img src={post.images[0].url} alt="#" className={s.img} />
-            <div className={s.postHeader}>
-              <User
-                url={post.postOwner.avatars?.[1]?.url}
-                userName={post.postOwner.userName}
-                userId={post.ownerId}
-                locale={locale}
-                style={{ marginRight: 'auto' }}
-              />
-              {post.userBan ? (
-                <Block1
-                  onClick={() => handleOpenModal('unban')}
-                  style={{ cursor: 'pointer' }}
+        {allPosts.map(
+          post =>
+            post.images?.[0]?.url && (
+              <div key={post.id}>
+                <img src={post.images?.[0]?.url} alt="#" className={s.img} />
+                <div className={s.postHeader}>
+                  <User
+                    url={post.postOwner.avatars?.[1]?.url}
+                    userName={post.postOwner.userName}
+                    userId={post.ownerId}
+                    locale={locale}
+                    style={{ marginRight: 'auto' }}
+                  />
+                  {post.userBan ? (
+                    <Block1
+                      onClick={() => handleOpenModal('unban')}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  ) : (
+                    <Block
+                      onClick={() => handleOpenModal('ban')}
+                      style={{ cursor: 'pointer' }}
+                    />
+                  )}
+                </div>
+                <p className={s.time}>
+                  {formatDateLocale(post.createdAt, locale as 'en' | 'ru')}
+                </p>
+                <p className={s.description}>{post.description}</p>
+                <ActionModal
+                  modalType={modalType}
+                  userId={post.postOwner.id}
+                  isBan={!!post.userBan}
+                  userName={post.postOwner.userName}
+                  onClose={setModalType}
                 />
-              ) : (
-                <Block
-                  onClick={() => handleOpenModal('ban')}
-                  style={{ cursor: 'pointer' }}
-                />
-              )}
-            </div>
-            <p className={s.time}>
-              {formatDateLocale(post.createdAt, locale as 'en' | 'ru')}
-            </p>
-            <p>{post.description}</p>
-            <ActionModal
-              modalType={modalType}
-              userId={post.postOwner.id}
-              isBan={!!post.userBan}
-              userName={post.postOwner.userName}
-              onClose={setModalType}
-            />
-          </div>
-        ))}
+              </div>
+            )
+        )}
       </div>
     </>
   )
