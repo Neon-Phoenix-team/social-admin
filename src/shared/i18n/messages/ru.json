@@ -27,6 +27,11 @@
     "profileLink": "Ссылка на профиль",
     "userName": "Имя пользователя",
     "dateAdded": "Дата создания",
+    "userSearch": "Поиск",
+    "filterUsers": {
+      "allUsers": "Все",
+      "blockedUsers": "Заблокированные"
+    },
     "dropDown": {
       "delete": "Удалить пользователя",
       "ban": "Заблокировать в системе",
