@@ -1,7 +1,8 @@
-import { HttpLink } from '@apollo/client'
 import { ApolloClient, InMemoryCache } from '@apollo/client-integration-nextjs'
+import {HttpLink, makeVar} from '@apollo/client'
 
-export function client() {
+export const isAdminVar = makeVar<boolean>(false);
+export function  client() {
   return new ApolloClient({
     link: new HttpLink({
       uri: process.env.NEXT_PUBLIC_GRAPH_API,
@@ -28,3 +29,5 @@ export function client() {
     }),
   })
 }
+
+

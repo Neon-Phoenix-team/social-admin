@@ -1,6 +1,20 @@
 @use '../../shared/styles/variables' as *;
 @use '../../shared/styles/typography' as *;
+.searchGroup{
+  margin:40px;
+  display: flex;
+  gap:20px;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.SelectBox{
+  width:50%;
+  max-width: 300px;
+  label{
+    width:70%;
+  }
+}
 .usersTable {
   width: 100%;
   border: 1px solid color($dark, 500);

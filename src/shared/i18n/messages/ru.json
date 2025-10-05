@@ -5,6 +5,13 @@
       "registerText": "Регистрация"
     }
   },
+  "authForm": {
+    "text": "Вход",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "btnText": "Вход",
+    "placeholder": "Введите ваш пароль"
+  },
   "menu": {
     "userList": "Пользователи",
     "statistics": "Статистика",
@@ -20,6 +27,13 @@
     "profileLink": "Ссылка на профиль",
     "userName": "Имя пользователя",
     "dateAdded": "Дата создания",
+    "userSearch": "Поиск",
+    "noUsers": "Нет пользователей",
+    "loading": "Загрузка данных",
+    "filterUsers": {
+      "allUsers": "Все",
+      "blockedUsers": "Заблокированные"
+    },
     "dropDown": {
       "delete": "Удалить пользователя",
       "ban": "Заблокировать в системе",
