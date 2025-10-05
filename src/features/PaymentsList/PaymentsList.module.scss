@@ -1,20 +1,6 @@
 @use '../../shared/styles/variables' as *;
 @use '../../shared/styles/typography' as *;
-.searchGroup{
-  margin:40px;
-  display: flex;
-  gap:20px;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.SelectBox{
-  width:50%;
-  max-width: 300px;
-  label{
-    width:70%;
-  }
-}
 .usersTable {
   width: 100%;
   border: 1px solid color($dark, 500);
@@ -23,7 +9,6 @@
   margin: 24px 0 36px;
 
   th, td {
-    //vertical-align: middle;
     padding: 12px 24px;
     text-align: left;
     border-bottom: 1px solid color($dark, 500);
@@ -42,19 +27,4 @@
   tbody tr:hover {
     background: color($dark, 500);
   }
-}
-
-.ban .cell {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.icon, .empty {
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-}
-.thWrapper{
-  display: flex;
 }

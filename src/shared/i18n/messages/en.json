@@ -5,6 +5,13 @@
     "paymentsList": "Payments List",
     "postsList": "Posts List"
   },
+  "authForm": {
+    "text": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "btnText": "Sign in",
+    "placeholder": "Input your password"
+  },
   "pagination": {
     "show": "Show",
     "onPage": "on page"
@@ -14,6 +21,13 @@
     "profileLink": "Profile Link",
     "userName": "UserName",
     "dateAdded": "Date added",
+    "userSearch": "Search",
+    "noUsers": "No users",
+    "loading": "Loading",
+    "filterUsers": {
+      "allUsers": "Not selected",
+      "blockedUsers": "Blocked"
+    },
     "subscriptionDate": "Subscription Date",
     "dropDown": {
       "delete": "Delete User",
@@ -46,5 +60,14 @@
     "days": "7 days",
     "month": "1 month",
     "noPayments": "No payments found"
+    }
+  },
+  "paymentsList": {
+    "fullName": "Full Name",
+    "dateAdded": "Date added",
+    "amount": "Amount",
+    "paymentMethod": "Payment Method",
+    "subscription":  "Subscription",
+    "noAvatar": "Avatar is missing"
   }
 }

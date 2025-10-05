@@ -21,6 +21,13 @@
     "userName": "Имя пользователя",
     "dateAdded": "Дата создания",
     "subscriptionDate": "Дата подписки",
+    "userSearch": "Поиск",
+    "noUsers": "Нет пользователей",
+    "loading": "Загрузка данных",
+    "filterUsers": {
+      "allUsers": "Все",
+      "blockedUsers": "Заблокированные"
+    },
     "dropDown": {
       "delete": "Удалить пользователя",
       "ban": "Заблокировать в системе",
@@ -52,5 +59,14 @@
     "days": "7 дней",
     "month": "1 месяц",
     "noPayments": "Платежи отсутствуют"
+  }
+},
+  "paymentsList": {
+    "fullName": "Полное имя",
+    "dateAdded": "Дата добавления",
+    "amount": "Количество",
+    "paymentMethod": "Платежный метод",
+    "subscription":  "Подписка",
+    "noAvatar": "Аватар отсутствует"
   }
 }
