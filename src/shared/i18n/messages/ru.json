@@ -28,6 +28,8 @@
     "userName": "Имя пользователя",
     "dateAdded": "Дата создания",
     "userSearch": "Поиск",
+    "noUsers": "Нет пользователей",
+    "loading": "Загрузка данных",
     "filterUsers": {
       "allUsers": "Все",
       "blockedUsers": "Заблокированные"

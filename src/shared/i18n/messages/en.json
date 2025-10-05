@@ -22,6 +22,8 @@
     "userName": "UserName",
     "dateAdded": "Date added",
     "userSearch": "Search",
+    "noUsers": "No users",
+    "loading": "Loading",
     "filterUsers": {
       "allUsers": "Not selected",
       "blockedUsers": "Blocked"
