@@ -1,0 +1,48 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/typography' as *;
+
+
+.usersTable {
+  max-width: 972px;
+  width: 100%;
+  border: 1px solid color($dark, 500);
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin: 24px 0 36px;
+
+  th, td {
+    //vertical-align: middle;
+    padding: 12px 24px;
+    text-align: left;
+    border-bottom: 1px solid color($dark, 500);
+    @include fontStyle("Inter", 14px, 400, color($light, 100), 1.7);
+  }
+
+  th {
+    background: color($dark, 500);
+    @include fontStyle("Inter", 14px, 600, color($light, 100), 1.7);
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  tbody tr:hover {
+    background: color($dark, 500);
+  }
+}
+
+.ban .cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon, .empty {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+.thWrapper{
+  display: flex;
+}

@@ -1,7 +1,7 @@
 'use client'
 
-import {GET_USERS_QUERY} from '@/shared/api/queries/queries'
-import {useQuery} from '@apollo/client/react'
+import { GET_USERS_QUERY } from '@/shared/api/queries/queries'
+import { useQuery } from '@apollo/client/react'
 import {
     GetUsersQuery,
     GetUsersQueryVariables,
@@ -12,11 +12,17 @@ import {Pagination} from '@/shared/ui/Pagination/Pagination'
 import {useState} from 'react'
 import {useTranslations} from 'next-intl'
 import Block from '@/shared/assets/icons/components/dropDown/Block'
+import { Button } from '@/shared/ui/Button/Button'
+import {SortDirection } from '@/shared/api/types'
+import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
+
+export type SortConfigType = {
+  sortBy: string | null;
+  sortDirection: SortDirection | null;
+}
 import {UserSearchInput} from "@/features/Search/UserSearchInput";
 import {SelectBox} from "@/shared/ui/Select/SelectBox";
 import {UserBlockStatus} from "@/shared/api/types";
-import {Button} from '@/shared/ui/Button/Button'
-import {LinearProgress} from '@/shared/ui/LinearProgress/LinearProgress'
 import {usePaginationAndSort} from '@/shared/hooks/UsePaginationAndSort'
 
 export const UsersList = () => {
@@ -36,7 +42,7 @@ export const UsersList = () => {
     const [status, setStatus] = useState<'ALL' | 'BLOCKED'>('ALL')
 
 
-    const {data, loading} = useQuery<GetUsersQuery, GetUsersQueryVariables>(
+  const {data, loading} = useQuery<GetUsersQuery, GetUsersQueryVariables>(
         GET_USERS_QUERY,
         {
             variables: {
