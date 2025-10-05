@@ -1,6 +1,10 @@
 @use '../../shared/styles/variables' as *;
 @use '../../shared/styles/typography' as *;
-
+.searchGroup{
+  display: flex;
+  gap:20px;
+  align-items: center;
+}
 .usersTable {
   width: 100%;
   border: 1px solid color($dark, 500);
