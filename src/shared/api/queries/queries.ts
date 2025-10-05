@@ -1,63 +1,198 @@
 import { gql } from '@apollo/client'
 
 export const LOGIN_ADMIN = gql`
-    mutation LoginAdmin($email: String!, $password: String!) {
-        loginAdmin(email: $email, password: $password) {
-            logged
-        }
+  mutation LoginAdmin($email: String!, $password: String!) {
+    loginAdmin(email: $email, password: $password) {
+      logged
     }
+  }
 `
 
 export const GET_USERS_QUERY = gql`
-    query GetUsers(
-        $pageNumber: Int = 1
-        $pageSize: Int = 10
-        $sortBy: String = "createdAt"
-        $sortDirection: SortDirection = desc
-        $searchTerm: String
-        $statusFilter: UserBlockStatus = ALL
+  query GetUsers(
+    $pageNumber: Int = 1
+    $pageSize: Int = 10
+    $sortBy: String = "createdAt"
+    $sortDirection: SortDirection = desc
+    $searchTerm: String
+    $statusFilter: UserBlockStatus = ALL
+  ) {
+    getUsers(
+      pageNumber: $pageNumber
+      pageSize: $pageSize
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+      searchTerm: $searchTerm
+      statusFilter: $statusFilter
     ) {
-        getUsers(
-            pageNumber: $pageNumber
-            pageSize: $pageSize
-            sortBy: $sortBy
-            sortDirection: $sortDirection
-            searchTerm: $searchTerm
-            statusFilter: $statusFilter
-        ) {
-            users {
-                id
-                userName
-                email
-                createdAt
-                userBan {
-                    reason
-                    createdAt
-                }
-                profile {
-                    createdAt
-                    firstName
-                    lastName
-                    id
-                }
-            }
-            pagination {
-                page
-                pageSize
-                totalCount
-                pagesCount
-            }
+      users {
+        id
+        userName
+        email
+        createdAt
+        userBan {
+          reason
+          createdAt
         }
+        profile {
+          createdAt
+          firstName
+          lastName
+          id
+        }
+      }
+      pagination {
+        page
+        pageSize
+        totalCount
+        pagesCount
+      }
     }
+  }
 `
 
 export const BAN_USER = gql`
-mutation banUser($banReason: String!, $userId: Int!) {
-    banUser(banReason: $banReason,userId:$userId)
-}`
+  mutation banUser($banReason: String!, $userId: Int!) {
+    banUser(banReason: $banReason, userId: $userId)
+  }
+`
 
 export const UNBAN_USER = gql`
-    mutation unbanUser( $userId: Int!) {
-        unbanUser(userId:$userId),
-        
-    }`
+  mutation unbanUser($userId: Int!) {
+    unbanUser(userId: $userId)
+  }
+`
+
+export const GET_POSTS_QUERY = gql`
+  query GetPosts(
+    $endCursorPostId: Int
+    $searchTerm: String
+    $pageSize: Int = 9
+    $sortBy: String = "createdAt"
+    $sortDirection: SortDirection = desc
+  ) {
+    getPosts(
+      endCursorPostId: $endCursorPostId
+      searchTerm: $searchTerm
+      pageSize: $pageSize
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        createdAt
+        ownerId
+        description
+        updatedAt
+        images {
+          id
+          url
+        }
+        postOwner {
+          id
+          userName
+          firstName
+          lastName
+          avatars {
+            url
+            width
+            height
+          }
+        }
+        userBan {
+          reason
+          createdAt
+        }
+      }
+      pageSize
+      totalCount
+    }
+  }
+`
+export const POST_ADDED_SUBSCRIPTION = gql`
+  subscription PostAdded {
+    postAdded {
+      id
+      description
+      createdAt
+      updatedAt
+      ownerId
+      images {
+        id
+        url
+      }
+      postOwner {
+        id
+        userName
+        firstName
+        lastName
+        avatars {
+          url
+          width
+          height
+        }
+      }
+      userBan {
+        reason
+        createdAt
+      }
+    }
+  }
+`
+
+export const REMOVE_USER = gql`
+  mutation removeUser($userId: Int!) {
+    removeUser(userId: $userId)
+  }
+`
+
+export const GET_PAYMENTS = gql`
+  query GetPayments(
+    $pageNumber: Int = 6
+    $pageSize: Int
+    $sortBy: String = "createdAt"
+    $sortDirection: SortDirection = desc
+    $searchTerm: String
+  ) {
+    getPayments(
+      pageNumber: $pageNumber
+      pageSize: $pageSize
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+      searchTerm: $searchTerm
+    ) {
+      items {
+        id
+        userId
+        userName
+        avatars {
+          url
+          width
+          height
+          fileSize
+        }
+      }
+      page
+      pageSize
+      totalCount
+      pagesCount
+    }
+  }
+`
+
+export const GET_PAYMENT_BY_ID = gql`
+  query GetPaymentsByIdUser($userId: Int!) {
+    getPaymentsByUser(userId: $userId) {
+      items {
+        id
+        paymentType
+        dateOfPayment
+        type
+        payments {
+          amount
+          currency
+        }
+      }
+    }
+  }
+`

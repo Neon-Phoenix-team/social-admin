@@ -32,5 +32,13 @@
       "unban": "Unban account",
       "info": "More information"
     }
+  },
+  "paymentsList": {
+    "fullName": "Full Name",
+    "dateAdded": "Date added",
+    "amount": "Amount",
+    "paymentMethod": "Payment Method",
+    "subscription":  "Subscription",
+    "noAvatar": "Avatar is missing"
   }
 }

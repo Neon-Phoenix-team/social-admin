@@ -15,6 +15,11 @@ export type Scalars = {
   DateTime: { input: any; output: any; }
 };
 
+export type SortConfigType = {
+  sortBy: string | null;
+  sortDirection: SortDirection | null;
+}
+
 export type Avatar = {
   __typename?: 'Avatar';
   fileSize?: Maybe<Scalars['Int']['output']>;

@@ -19,7 +19,7 @@ type Props = {
   onEditModeToggle?: () => void
 }
 
-export function Dropdown({ item}: Props) {
+export function Dropdown({ item }: Props) {
   const [modalType, setModalType] = useState<modalType>(null)
   const handleOpenModal = (type: 'delete' | 'ban' | 'unban') => {
     setModalType(type)
@@ -43,23 +43,23 @@ export function Dropdown({ item}: Props) {
         >
           <DropdownMenu.Item className={s.menuItem} onClick={() => handleOpenModal('delete')}>
             <div className={s.item}>
-              <PersonRemoveOutline/>{t('delete')}
+              <PersonRemoveOutline />{t('delete')}
             </div>
           </DropdownMenu.Item>
           <DropdownMenu.Item className={s.menuItem} onClick={() => handleOpenModal(item.userBan ? 'unban' : 'ban')}>
             <div className={s.item}>
-              {item.userBan ? <><Block1/>{t('unban')}</> :  <><Block/>{t('ban')}</>}
+              {item.userBan ? <><Block1 />{t('unban')}</> : <><Block />{t('ban')}</>}
             </div>
           </DropdownMenu.Item>
           <DropdownMenu.Item className={s.menuItem}>
             <div className={s.item}>
-              <MoreHorizontal/>{t('info')}
+              <MoreHorizontal />{t('info')}
             </div>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
       <ActionModal modalType={modalType} userId={item.id} isBan={!!item.userBan} userName={item.userName}
-                   onClose={setModalType} />
+        onClose={setModalType} />
     </>
   )
 }

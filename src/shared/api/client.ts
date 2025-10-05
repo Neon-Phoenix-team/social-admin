@@ -10,7 +10,23 @@ export function  client() {
         Authorization: 'Basic ' + btoa('admin@gmail.com:admin'),
       },
     }),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      typePolicies: {
+        Query: {
+          fields: {
+            getPosts: {
+              keyArgs: ['searchTerm'], // treat each search separately
+              merge(existing = { items: [] }, incoming) {
+                return {
+                  ...incoming,
+                  items: [...(existing.items || []), ...incoming.items],
+                }
+              },
+            },
+          },
+        },
+      },
+    }),
   })
 }
 
