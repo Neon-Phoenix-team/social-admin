@@ -8,8 +8,9 @@ import { useTranslations } from 'next-intl'
 import { useInfScroll } from '@/shared/hooks/useInfScroll'
 import { Button } from '@/shared/ui/Button/Button'
 
-
 export const UploadedPhotos = () => {
+
+
 
   const params = useParams()
   const t = useTranslations('userList')
@@ -40,11 +41,11 @@ export const UploadedPhotos = () => {
             )
           ))}
         </div>
-        <div>
-          <Button onClick={setNextPage}>
-            Click me
-          </Button>
-        </div>
+        {/*<div>*/}
+        {/*  <Button onClick={setNextPage}>*/}
+        {/*    Click me*/}
+        {/*  </Button>*/}
+        {/*</div>*/}
       </div>
     </div>
   )
