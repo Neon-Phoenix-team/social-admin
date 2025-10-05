@@ -302,58 +302,58 @@ export const GET_PAYMENTS_BY_USER_QUERY = gql`
         }
     }
 `
-  mutation removeUser($userId: Int!) {
-    removeUser(userId: $userId)
-  }
-`
-
-export const GET_PAYMENTS = gql`
-  query GetPayments(
-    $pageNumber: Int = 6
-    $pageSize: Int
-    $sortBy: String = "createdAt"
-    $sortDirection: SortDirection = desc
-    $searchTerm: String
-  ) {
-    getPayments(
-      pageNumber: $pageNumber
-      pageSize: $pageSize
-      sortBy: $sortBy
-      sortDirection: $sortDirection
-      searchTerm: $searchTerm
-    ) {
-      items {
-        id
-        userId
-        userName
-        avatars {
-          url
-          width
-          height
-          fileSize
-        }
-      }
-      page
-      pageSize
-      totalCount
-      pagesCount
-    }
-  }
-`
-
-export const GET_PAYMENT_BY_ID = gql`
-  query GetPaymentsByIdUser($userId: Int!) {
-    getPaymentsByUser(userId: $userId) {
-      items {
-        id
-        paymentType
-        dateOfPayment
-        type
-        payments {
-          amount
-          currency
-        }
-      }
-    }
-  }
-`
+//   mutation removeUser($userId: Int!) {
+//     removeUser(userId: $userId)
+//   }
+// `
+//
+// export const GET_PAYMENTS = gql`
+//   query GetPayments(
+//     $pageNumber: Int = 6
+//     $pageSize: Int
+//     $sortBy: String = "createdAt"
+//     $sortDirection: SortDirection = desc
+//     $searchTerm: String
+//   ) {
+//     getPayments(
+//       pageNumber: $pageNumber
+//       pageSize: $pageSize
+//       sortBy: $sortBy
+//       sortDirection: $sortDirection
+//       searchTerm: $searchTerm
+//     ) {
+//       items {
+//         id
+//         userId
+//         userName
+//         avatars {
+//           url
+//           width
+//           height
+//           fileSize
+//         }
+//       }
+//       page
+//       pageSize
+//       totalCount
+//       pagesCount
+//     }
+//   }
+// `
+//
+// export const GET_PAYMENT_BY_ID = gql`
+//   query GetPaymentsByIdUser($userId: Int!) {
+//     getPaymentsByUser(userId: $userId) {
+//       items {
+//         id
+//         paymentType
+//         dateOfPayment
+//         type
+//         payments {
+//           amount
+//           currency
+//         }
+//       }
+//     }
+//   }
+// `
