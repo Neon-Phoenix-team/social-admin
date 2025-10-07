@@ -6,30 +6,36 @@ import { useParams } from 'next/navigation'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
 import { useTranslations } from 'next-intl'
 import { useInfScroll } from '@/shared/hooks/useInfScroll'
-import { Button } from '@/shared/ui/Button/Button'
+import { useEffect } from 'react' // Нужно для логики подгрузки
+import { useInView } from 'react-intersection-observer' // Импорт хука для скролла
 
 export const UploadedPhotos = () => {
-
-
-
   const params = useParams()
   const t = useTranslations('userList')
-
   const userId = params.userId ? Number(params.userId) : null
 
-  const {loading, data, setNextPage} = useInfScroll(userId!)
+  const { posts, loading, loadNextPage, hasMore } = useInfScroll(userId!)
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  })
+
+  useEffect(() => {
+    if (inView && hasMore && !loading) {
+      loadNextPage()
+    }
+  }, [inView, hasMore, loading, loadNextPage])
 
 
-  if (loading) return <div><LinearProgress /></div>
+  if (loading && posts.length === 0) return <div><LinearProgress /></div>
 
-  const postsState = data?.getPostsByUser.items
-  if (postsState?.length === 0) return <div>{t('noPhotosUploaded')}</div>
+  if (posts.length === 0 && !loading) return <div>{t('noPhotosUploaded')}</div>
 
   return (
     <div className={s.container}>
       <div className={s.head}>
         <div className={s.postsGrid}>
-          {postsState?.map(post => (
+          {posts.map(post => (
             post.url && (
               <Image
                 key={post.id}
@@ -41,12 +47,17 @@ export const UploadedPhotos = () => {
             )
           ))}
         </div>
-        {/*<div>*/}
-        {/*  <Button onClick={setNextPage}>*/}
-        {/*    Click me*/}
-        {/*  </Button>*/}
-        {/*</div>*/}
       </div>
+
+      {hasMore && (
+        <div ref={ref} className={s.loadingMarker}>
+          {loading && <LinearProgress />}
+        </div>
+      )}
+
+      {!hasMore && posts.length > 0 && (
+        <p className={s.endOfList}>{t('allPostsLoaded')}</p>
+      )}
     </div>
   )
 }
