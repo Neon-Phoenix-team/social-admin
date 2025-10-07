@@ -35,6 +35,7 @@
       "allUsers": "All",
       "blockedUsers": "Blocked"
     },
+    "allPostsLoaded": "All posts have been loaded",
     "dropDown": {
       "delete": "Delete User",
       "ban": "Ban in the System",
