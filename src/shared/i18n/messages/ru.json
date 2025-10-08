@@ -20,11 +20,55 @@
     "profileLink": "Ссылка на профиль",
     "userName": "Имя пользователя",
     "dateAdded": "Дата создания",
+    "subscriptionDate": "Дата подписки",
+    "userSearch": "Поиск",
+    "noUsers": "Нет пользователей",
+    "loading": "Загрузка данных",
+    "filterUsers": {
+      "allUsers": "Все",
+      "blockedUsers": "Заблокированные"
+    },
+    "allPostsLoaded": "Все посты подгружены",
     "dropDown": {
       "delete": "Удалить пользователя",
       "ban": "Заблокировать в системе",
       "unban": "Разблокировать",
       "info": "Больше информации"
-  }
-}
+    },
+
+    "noSubscriptions": "Подписки отсутствуют",
+    "noSubscribers": "Подписчики отсутствуют",
+    "noPhotosUploaded": "Пользователь пока не загрузил ни одной фотографии"
+  },
+  "settings": {
+    "followers": "Подписчики",
+    "following": "Подписки",
+    "payments": "Платежи",
+    "uploadedPhotos": "Загруженные фотографии",
+    "backToUsersList": "Вернуться к списку пользователей",
+    "userId": "ID пользователя",
+    "profileCreationDate": "Дата создания профиля",
+    "userNotFound": "Пользователь не найден"
+  },
+  "paymentTable": {
+    "dateOfPayment": "Дата оплаты",
+    "endDateOfSubscription": "Дата окончания подписки",
+    "userName": "Имя пользователя",
+    "amount": "Сумма,$",
+    "subscriptionType": "Тип подписки",
+    "paymentType": "Тип оплаты",
+    "day": "1 день",
+    "days": "7 дней",
+    "month": "1 месяц",
+    "noPayments": "Платежи отсутствуют"
+  },
+  "paymentsList": {
+    "fullName": "Полное имя",
+    "dateAdded": "Дата добавления",
+    "amount": "Количество",
+    "paymentMethod": "Платежный метод",
+    "subscription": "Подписка",
+    "noAvatar": "Аватар отсутствует"
+  },
+  "search": { "search": "Поиск" }
 }

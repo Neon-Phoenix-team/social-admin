@@ -1,0 +1,35 @@
+@use '../../shared/styles/variables' as *;
+.post {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 12px;
+}
+.img {
+  width: 100%;
+}
+.time {
+  font-size: 12px;
+  color: color($light, 900);
+  margin: 5px 0;
+}
+
+.p {
+  height: 300px;
+}
+.postHeader {
+  display: flex;
+  align-items: center;
+}
+.inputWrapper {
+  margin: 20px 0;
+}
+.description {
+  width: 100%;
+  overflow: hidden;
+}
+.post > * {
+  word-wrap: break-word; /* legacy but widely supported */
+  overflow-wrap: anywhere; /* modern, better */
+  word-break: break-word; /* fallback */
+  min-width: 0; /* prevents flex/grid children from overflowing */
+}

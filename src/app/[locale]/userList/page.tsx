@@ -1,9 +1,12 @@
 'use client'
 
-import { UsersList } from '@/features/UsersList/UsersList'
+import {UsersList} from '@/features/UsersList/UsersList'
+import {withAdminGuard} from "@/shared/lib/withAdminGuard";
 
-export default function UsersPage() {
-  return (
-    <UsersList />
-  )
+function UsersPage() {
+    return (
+        <UsersList/>
+    )
 }
+
+export default withAdminGuard(UsersPage)

@@ -34,3 +34,91 @@ export type UnbanUserMutationVariables = Types.Exact<{
 
 
 export type UnbanUserMutation = { __typename?: 'Mutation', unbanUser: boolean };
+
+export type GetPostsQueryVariables = Types.Exact<{
+  searchTerm?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+}>;
+
+
+export type GetPostsQuery = { __typename?: 'Query', getPosts: { __typename?: 'PostsPaginationModel', pageSize: number, totalCount: number, items: Array<{ __typename?: 'Post', id: number, createdAt: any, ownerId: number, description: string, updatedAt: any, images?: Array<{ __typename?: 'ImagePost', id?: number | null, url?: string | null }> | null, postOwner: { __typename?: 'PostOwnerModel', id: number, userName: string, firstName?: string | null, lastName?: string | null, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, width?: number | null, height?: number | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null }> } };
+
+export type PostAddedSubscriptionVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type PostAddedSubscription = { __typename?: 'Subscription', postAdded: { __typename?: 'Post', id: number, description: string, createdAt: any, updatedAt: any, ownerId: number, images?: Array<{ __typename?: 'ImagePost', id?: number | null, url?: string | null }> | null, postOwner: { __typename?: 'PostOwnerModel', id: number, userName: string, firstName?: string | null, lastName?: string | null, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, width?: number | null, height?: number | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null } };
+export type RemoveUserMutationVariables = Types.Exact<{
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type RemoveUserMutation = { __typename?: 'Mutation', removeUser: boolean };
+
+export type GetUserQueryVariables = Types.Exact<{
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetUserQuery = { __typename?: 'Query', getUser: { __typename?: 'User', id: number, userName: string, email: string, createdAt: any, profile: { __typename?: 'Profile', id: number, userName?: string | null, firstName?: string | null, lastName?: string | null, city?: string | null, country?: string | null, region?: string | null, dateOfBirth?: any | null, aboutMe?: string | null, createdAt: any, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null }, userBan?: { __typename?: 'UserBan', reason: string, createdAt: any } | null } };
+
+export type GetPostsByUserQueryVariables = Types.Exact<{
+  userId: Types.Scalars['Int']['input'];
+  endCursorId?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+}>;
+
+
+export type GetPostsByUserQuery = { __typename?: 'Query', getPostsByUser: { __typename?: 'PostsByUserModel', pagesCount: number, pageSize: number, totalCount: number, items?: Array<{ __typename?: 'ImagePost', id?: number | null, createdAt?: any | null, url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null } };
+
+export type GetFollowersQueryVariables = Types.Exact<{
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetFollowersQuery = { __typename?: 'Query', getFollowers: { __typename?: 'FollowPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'Follow', id: number, userId: number, userName?: string | null, firstName?: string | null, lastName?: string | null, createdAt: any }> } };
+
+export type GetFollowingQueryVariables = Types.Exact<{
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetFollowingQuery = { __typename?: 'Query', getFollowing: { __typename?: 'FollowPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'Follow', id: number, userId: number, userName?: string | null, firstName?: string | null, lastName?: string | null, createdAt: any }> } };
+
+export type GetPaymentsByUserQueryVariables = Types.Exact<{
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetPaymentsByUserQuery = { __typename?: 'Query', getPaymentsByUser: { __typename?: 'PaymentPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'SubscriptionByPaymentModel', id: string, businessAccountId: number, status: Types.StatusSubscriptionType, dateOfPayment?: any | null, startDate?: any | null, endDate?: any | null, type: Types.SubscriptionType, price: number, paymentType?: Types.PaymentMethod | null, payments: Array<{ __typename?: 'Payment', id?: number | null, userId?: number | null, paymentMethod?: Types.PaymentMethod | null, amount?: number | null, currency?: Types.CurrencyType | null, createdAt?: any | null, endDate?: any | null, type?: Types.SubscriptionType | null }> }> } };
+
+
+export type GetPaymentsQueryVariables = Types.Exact<{
+  pageNumber?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  pageSize?: Types.InputMaybe<Types.Scalars['Int']['input']>;
+  sortBy?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  searchTerm?: Types.InputMaybe<Types.Scalars['String']['input']>;
+}>;
+
+
+export type GetPaymentsQuery = { __typename?: 'Query', getPayments: { __typename?: 'PaymentsPaginationModel', page: number, pageSize: number, totalCount: number, pagesCount: number, items: Array<{ __typename?: 'SubscriptionPaymentsModel', id?: number | null, userId?: number | null, userName: string, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, width?: number | null, height?: number | null, fileSize?: number | null }> | null }> } };
+
+export type GetPaymentsByIdUserQueryVariables = Types.Exact<{
+  userId: Types.Scalars['Int']['input'];
+}>;
+
+
+export type GetPaymentsByIdUserQuery = { __typename?: 'Query', getPaymentsByUser: { __typename?: 'PaymentPaginationModel', items: Array<{ __typename?: 'SubscriptionByPaymentModel', id: string, paymentType?: Types.PaymentMethod | null, dateOfPayment?: any | null, type: Types.SubscriptionType, payments: Array<{ __typename?: 'Payment', amount?: number | null, currency?: Types.CurrencyType | null }> }> } };
