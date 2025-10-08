@@ -1,34 +1,34 @@
 "use client";
 
-import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
+import {useTranslations} from "next-intl";
+import {useMutation} from "@apollo/client/react";
+import {LOGIN_ADMIN} from "@/shared/api/queries/queries";
+import {
+    LoginAdminMutation,
+    LoginAdminMutationVariables,
+} from "@/shared/api/queries/queries.generated";
 
 import styles from "./SignInForm.module.scss";
 import {Input} from "@/shared/ui/Input/Input";
 import {Button} from "@/shared/ui/Button/Button";
 import {isAdminVar} from "@/shared/api/client";
-import {useTranslations} from "next-intl";
-import {useReactiveVar} from "@apollo/client/react";
+import {LinearProgress} from "@/shared/ui/LinearProgress/LinearProgress";
 
-// Zod схема
 const schema = z.object({
     email: z.string().email("Введите корректный email"),
     password: z.string().min(1, "Введите пароль"),
 });
 type FormValues = z.infer<typeof schema>;
 
-// захардкоженные данные
-const HARDCODED_EMAIL = "admin@gmail.com";
-const HARDCODED_PASSWORD = "admin";
-
 export const SignInForm = () => {
     const router = useRouter();
+    const [loginAdmin, {loading}] = useMutation<LoginAdminMutation, LoginAdminMutationVariables>(LOGIN_ADMIN);
+    const t = useTranslations("authForm");
 
-    // const [showPassword, setShowPassword] = useState(false);
-    const t = useTranslations("authForm")
     const {
         register,
         handleSubmit,
@@ -38,34 +38,38 @@ export const SignInForm = () => {
         resolver: zodResolver(schema),
         mode: "onChange",
     });
-    const isAdmin = useReactiveVar(isAdminVar);
-    if (isAdmin) return null
+
     const onSubmit = async (data: FormValues) => {
-        if (
-            data.email === HARDCODED_EMAIL &&
-            data.password === HARDCODED_PASSWORD
-        ) {
-            isAdminVar(true);
-            router.push("/userList");
-        } else {
+        try {
+            const {data: response} = await loginAdmin({variables: data});
+
+            if (response?.loginAdmin?.logged) {
+                isAdminVar(true);
+                router.push("/userList");
+            } else {
+                throw new Error("Неверный email или пароль");
+            }
+        } catch (err: any) {
             setError("password", {
                 type: "manual",
-                message: "Неверный email или пароль",
+                message: err.message || "Ошибка входа",
             });
         }
     };
 
-    return (
-        <div className={styles.container}>
-            <h1 className={styles.title}>{t('text')}</h1>
 
+    return (
+
+        <div className={styles.container}>
+            <h1 className={styles.title}>{t("text")}</h1>
+            {loading&&<LinearProgress/>}
             <form
                 className={styles.form}
                 onSubmit={handleSubmit(onSubmit)}
                 noValidate
             >
                 <label className={styles.label}>
-                    <span className={styles.labelText}>{t('email')}</span>
+                    <span className={styles.labelText}>{t("email")}</span>
                     <Input
                         type="default"
                         placeholder="email@example.com"
@@ -75,20 +79,19 @@ export const SignInForm = () => {
                 </label>
 
                 <label className={styles.label}>
-                    <span className={styles.labelText}>{t('password')}</span>
+                    <span className={styles.labelText}>{t("password")}</span>
                     <div className={styles.passwordWrapper}>
                         <Input
-                            type={"password"}
+                            type="password"
                             placeholder="Введите пароль"
                             {...register("password")}
                             errorMessage={errors.password?.message}
                         />
-
                     </div>
                 </label>
 
                 <Button type="submit" disabled={isSubmitting || !isValid}>
-                    {isSubmitting ? "Входим..." : t('btnText')}
+                    {isSubmitting ? "Входим..." : t("btnText")}
                 </Button>
             </form>
         </div>
