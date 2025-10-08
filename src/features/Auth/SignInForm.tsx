@@ -1,24 +1,25 @@
 "use client";
 
-import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {z} from "zod";
-
 import styles from "./SignInForm.module.scss";
 import {Input} from "@/shared/ui/Input/Input";
 import {Button} from "@/shared/ui/Button/Button";
 import {isAdminVar} from "@/shared/api/client";
 import {useTranslations} from "next-intl";
 import {useReactiveVar} from "@apollo/client/react";
+import { FormValues, getSchema } from '@/features/Auth/lib/schemas'
 
-// Zod схема
-const schema = z.object({
-    email: z.string().email("Введите корректный email"),
-    password: z.string().min(1, "Введите пароль"),
-});
-type FormValues = z.infer<typeof schema>;
+
+
+
+// // Zod схема
+// const schema = z.object({
+//     email: z.string().email(t("emailError")),
+//     password: z.string().min(1, t("placeholder")),
+// });
+// type FormValues = z.infer<typeof schema>;
 
 // захардкоженные данные
 const HARDCODED_EMAIL = "admin@gmail.com";
@@ -26,16 +27,15 @@ const HARDCODED_PASSWORD = "admin";
 
 export const SignInForm = () => {
     const router = useRouter();
-
-    // const [showPassword, setShowPassword] = useState(false);
     const t = useTranslations("authForm")
+    // const [showPassword, setShowPassword] = useState(false);
     const {
         register,
         handleSubmit,
         formState: {errors, isSubmitting, isValid},
         setError,
     } = useForm<FormValues>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(getSchema(t)),
         mode: "onChange",
     });
     const isAdmin = useReactiveVar(isAdminVar);

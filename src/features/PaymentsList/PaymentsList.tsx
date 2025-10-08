@@ -8,7 +8,7 @@ import {
 } from '@/shared/api/queries/queries.generated'
 import { GET_PAYMENTS } from '@/shared/api/queries/queries'
 import { PaymentById } from '@/features/PaymentsList/PaymentsById/PaymentById'
-import { usePaginationAndSort } from '@/shared/hooks/UsePaginationAndSort'
+import { usePagination } from '@/shared/hooks/UsePagination'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
 import { Button } from '@/shared/ui/Button/Button'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
@@ -18,7 +18,7 @@ import { useTranslations } from 'next-intl'
 
 export const PaymentsList = () => {
 
-  const { itemsCountForPage, page, onChangePagination, sortConfig, handleSort, getSortIcon } = usePaginationAndSort()
+  const { itemsCountForPage, page, onChangePagination, sortConfig, handleSort, getSortIcon } = usePagination()
 
   const [searchTerm, setSearchTerm] = useState('')
 

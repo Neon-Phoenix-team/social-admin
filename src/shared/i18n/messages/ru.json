@@ -5,6 +5,14 @@
       "registerText": "Регистрация"
     }
   },
+  "authForm": {
+    "text": "Вход",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "btnText": "Войти",
+    "placeholder": "Введите пароль",
+    "emailError": "Введите корректный email"
+  },
   "menu": {
     "userList": "Пользователи",
     "statistics": "Статистика",

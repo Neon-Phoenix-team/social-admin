@@ -17,6 +17,9 @@ importers:
       '@apollo/experimental-nextjs-app-support':
         specifier: ^0.13.1
         version: 0.13.1(@apollo/client@4.0.5(graphql-ws@6.0.6(graphql@16.11.0)(ws@8.18.3))(graphql@16.11.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2))(@types/react@19.1.13)(graphql@16.11.0)(next@15.5.3(@babel/core@7.28.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.92.1))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)
+      '@graphql-codegen/typescript-operations':
+        specifier: ^5.0.0
+        version: 5.0.0(graphql@16.11.0)
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.62.0(react@19.1.0))
@@ -91,9 +94,6 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(graphql@16.11.0)
       '@graphql-codegen/typescript':
-        specifier: ^5.0.0
-        version: 5.0.0(graphql@16.11.0)
-      '@graphql-codegen/typescript-operations':
         specifier: ^5.0.0
         version: 5.0.0(graphql@16.11.0)
       '@graphql-codegen/typescript-react-apollo':

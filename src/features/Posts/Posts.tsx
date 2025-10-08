@@ -18,6 +18,7 @@ import { formatDateLocale } from '@/utils/formatDate'
 import { useQuery, useSubscription } from '@apollo/client/react'
 import { useEffect, useState } from 'react'
 import s from './Posts.module.scss'
+import { useParams } from 'next/navigation'
 
 export default function Posts() {
   const [modalType, setModalType] = useState<modalType>(null)
@@ -27,8 +28,8 @@ export default function Posts() {
 
   const [search, setSearch] = useState('')
   const [fetching, setFetching] = useState(true)
-  // const locale = useLocale()
-  const locale = 'en'
+  const { locale } = useParams();
+  console.log(typeof locale)
   const { data, fetchMore, refetch } = useQuery<
     GetPostsQuery,
     GetPostsQueryVariables
@@ -136,7 +137,7 @@ export default function Posts() {
                     url={post.postOwner.avatars?.[1]?.url}
                     userName={post.postOwner.userName}
                     userId={post.ownerId}
-                    locale={locale}
+                    locale={locale as 'en' | 'ru'}
                     style={{ marginRight: 'auto' }}
                   />
                   {post.userBan ? (

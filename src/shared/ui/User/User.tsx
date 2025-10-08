@@ -10,7 +10,6 @@ type PropsType = {
   locale?: string
 }
 export function User({ userId, userName, url, style, locale }: PropsType) {
-  // const locale = await getLocale()
   return (
     <Link className={s.user} href={`/${locale}/user/${userId}`} style={style}>
       <Avatar url={url} />
