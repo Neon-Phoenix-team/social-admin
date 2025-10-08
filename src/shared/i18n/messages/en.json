@@ -26,7 +26,8 @@
     "dateAdded": "Date added",
     "amount": "Amount",
     "paymentMethod": "Payment Method",
-    "subscription":  "Subscription",
+    "subscription": "Subscription",
     "noAvatar": "Avatar is missing"
-  }
+  },
+  "search": { "search": "Search" }
 }
