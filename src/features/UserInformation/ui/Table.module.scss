@@ -1,21 +1,9 @@
-@use '../../shared/styles/variables' as *;
-@use '../../shared/styles/typography' as *;
-.searchGroup{
-  margin:40px;
-  display: flex;
-  gap:20px;
-  justify-content: space-between;
-  align-items: center;
-}
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/typography' as *;
 
-.SelectBox{
-  width:50%;
-  max-width: 300px;
-  label{
-    width:70%;
-  }
-}
+
 .usersTable {
+  max-width: 972px;
   width: 100%;
   border: 1px solid color($dark, 500);
   border-collapse: collapse;

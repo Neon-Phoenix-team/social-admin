@@ -1,11 +1,13 @@
 'use client'
 
 
+import {PaymentsList} from '@/features/PaymentsList/PaymentsList'
+import {withAdminGuard} from "@/shared/lib/withAdminGuard";
 
-import { PaymentsList } from '@/features/PaymentsList/PaymentsList'
-
-export default function PaymentsListPage() {
-  return (
-    <PaymentsList />
-  )
+function PaymentsListPage() {
+    return (
+        <PaymentsList/>
+    )
 }
+
+export default withAdminGuard(PaymentsListPage)

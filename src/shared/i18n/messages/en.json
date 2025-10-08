@@ -1,9 +1,22 @@
 {
+  "header": {
+    "loginButtons": {
+      "loginText": "Sign in",
+      "registerText": "Register"
+    }
+  },
   "menu": {
     "userList": "User List",
     "statistics": "Statistics",
     "paymentsList": "Payments List",
     "postsList": "Posts List"
+  },
+  "authForm": {
+    "text": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "btnText": "Sign in",
+    "placeholder": "Input your password"
   },
   "pagination": {
     "show": "Show",
@@ -14,12 +27,46 @@
     "profileLink": "Profile Link",
     "userName": "UserName",
     "dateAdded": "Date added",
+    "subscriptionDate": "Subscription Date",
+    "userSearch": "Search",
+    "noUsers": "No users",
+    "loading": "Loading",
+    "filterUsers": {
+      "allUsers": "All",
+      "blockedUsers": "Blocked"
+    },
+    "allPostsLoaded": "All posts have been loaded",
     "dropDown": {
       "delete": "Delete User",
       "ban": "Ban in the System",
       "unban": "Unban account",
       "info": "More information"
-    }
+    },
+    "noSubscriptions": "No subscriptions found",
+    "noSubscribers": "No subscribers found",
+    "noPhotosUploaded": "The user hasn't uploaded any photos yet"
+  },
+  "settings": {
+    "followers": "Followers",
+    "following": "Following",
+    "payments": "Payments",
+    "uploadedPhotos": "Uploaded photos",
+    "backToUsersList": "Back to Users List",
+    "userId": "UserID",
+    "profileCreationDate": "Profile Creation Date",
+    "userNotFound": "User not found"
+  },
+  "paymentTable": {
+    "dateOfPayment": "Date of Payment",
+    "endDateOfSubscription": "Subscription End Date",
+    "userName": "User Name",
+    "amount": "Amount,$",
+    "subscriptionType": "Subscription Type",
+    "paymentType": "Payment Type",
+    "day": "1 day",
+    "days": "7 days",
+    "month": "1 month",
+    "noPayments": "No payments found"
   },
   "paymentsList": {
     "fullName": "Full Name",

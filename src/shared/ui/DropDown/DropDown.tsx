@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import Block from '@/shared/assets/icons/components/dropDown/Block'
 import Block1 from '@/shared/assets/icons/components/dropDown/Block1'
 import PersonRemoveOutline from '@/shared/assets/icons/components/dropDown/PersonRemoveOutline'
+import { useParams, useRouter } from 'next/navigation'
 
 
 export type modalType = null | 'delete' | 'ban' | 'unban'
@@ -26,6 +27,14 @@ export function Dropdown({ item }: Props) {
   }
 
   const t = useTranslations("userList.dropDown")
+  const router = useRouter()
+  const { locale } = useParams()
+
+
+  const handleInfoClick = () => {
+
+    router.push(`/${locale}/user/${item.id}/information`)
+  }
 
   return (
     <>
@@ -51,7 +60,7 @@ export function Dropdown({ item }: Props) {
               {item.userBan ? <><Block1 />{t('unban')}</> : <><Block />{t('ban')}</>}
             </div>
           </DropdownMenu.Item>
-          <DropdownMenu.Item className={s.menuItem}>
+          <DropdownMenu.Item className={s.menuItem} onClick={handleInfoClick}>
             <div className={s.item}>
               <MoreHorizontal />{t('info')}
             </div>
