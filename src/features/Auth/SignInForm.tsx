@@ -17,6 +17,7 @@ import {Input} from "@/shared/ui/Input/Input";
 import {Button} from "@/shared/ui/Button/Button";
 import {isAdminVar} from "@/shared/api/client";
 import {LinearProgress} from "@/shared/ui/LinearProgress/LinearProgress";
+import {useState} from "react";
 
 const schema = z.object({
     email: z.string().email("Введите корректный email"),
@@ -26,8 +27,9 @@ type FormValues = z.infer<typeof schema>;
 
 export const SignInForm = () => {
     const router = useRouter();
-    const [loginAdmin, {loading}] = useMutation<LoginAdminMutation, LoginAdminMutationVariables>(LOGIN_ADMIN);
     const t = useTranslations("authForm");
+    const [loginAdmin] = useMutation<LoginAdminMutation, LoginAdminMutationVariables>(LOGIN_ADMIN);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const {
         register,
@@ -45,6 +47,7 @@ export const SignInForm = () => {
 
             if (response?.loginAdmin?.logged) {
                 isAdminVar(true);
+                setIsLoggedIn(true); // скрываем форму моментально
                 router.push("/userList");
             } else {
                 throw new Error("Неверный email или пароль");
@@ -58,11 +61,11 @@ export const SignInForm = () => {
     };
 
 
-    return (
 
+    return (
         <div className={styles.container}>
             <h1 className={styles.title}>{t("text")}</h1>
-            {loading&&<LinearProgress/>}
+
             <form
                 className={styles.form}
                 onSubmit={handleSubmit(onSubmit)}
@@ -83,7 +86,7 @@ export const SignInForm = () => {
                     <div className={styles.passwordWrapper}>
                         <Input
                             type="password"
-                            placeholder="Введите пароль"
+                            placeholder={t("placeholder")}
                             {...register("password")}
                             errorMessage={errors.password?.message}
                         />
