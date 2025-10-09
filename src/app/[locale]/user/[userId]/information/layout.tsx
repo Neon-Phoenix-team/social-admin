@@ -47,6 +47,7 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
   const handleClick =()=>{
     router.push(`/${params.locale}/userList`)
   }
+  const fullName = `${user.profile.firstName || ''} ${user.profile.lastName || ''}`.trim();
 
 
   return (
@@ -68,13 +69,17 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
               height={60}
             />
             <div className={s.nameWrapper}>
-              <div className={s.lastName}>{`${user.profile.firstName} ${user.profile.lastName}`}</div>
+              <div className={s.lastName}>
+                {fullName
+                  ? fullName
+                  : t('userNameMissing')}
+              </div>
               <div className={s.userName}>{user.profile.userName}</div>
             </div>
           </div>
           <div className={s.detailsWrapper}>
             <div className={s.details}>
-              <div className={s.label}>{t("userId")}</div>
+              <div className={s.label}>{t('userId')}</div>
               <div>{user.profile.id}</div>
             </div>
             <div className={s.details}>
@@ -87,7 +92,7 @@ export default function SettingsLayout({ children }: { children: ReactNode }) {
       <TabsComponent
         className={s.nav}
         tabs={getSettingsSections(t)}
-        defaultValue={value}
+        value={value}
         onValueChange={onValueChange}
       />
 
