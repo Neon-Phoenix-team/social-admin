@@ -76,5 +76,5 @@
     "subscription": "Subscription",
     "noAvatar": "Avatar is missing"
   },
-  "search": { "search": "Search" }
+  "postsList": { "search": "Search", "showMore":"show more", "hide":"hide" }
 }

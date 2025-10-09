@@ -83,7 +83,7 @@ export default function Posts() {
         return [...prev, ...newPosts]
       })
     }
-  }, [data])
+  }, [data, locale])
 
   //scrollEvent
   useEffect(() => {
@@ -117,7 +117,11 @@ export default function Posts() {
       }).then(() => setFetching(false))
     }
   }, [fetching, search])
-  const t = useTranslations('search')
+  useEffect(() => {
+    setAllPosts([])
+    refetch()
+  }, [locale])
+  const t = useTranslations('postsList')
   return (
     <>
       <div className={s.inputWrapper}>
@@ -129,9 +133,9 @@ export default function Posts() {
       </div>
       <div className={s.post}>
         {allPosts.map(
-          post =>
+          (post, ind) =>
             post.images?.[0]?.url && (
-              <div key={post.id}>
+              <div key={post.id * ind}>
                 <img src={post.images?.[0]?.url} alt="#" className={s.img} />
                 <div className={s.postHeader}>
                   <User
@@ -154,7 +158,6 @@ export default function Posts() {
                   {formatDateLocale(post.createdAt, locale as 'en' | 'ru')}
                 </p>
                 <ReadMore text={post.description}></ReadMore>
-                {/* <p className={s.description}>{post.description}</p> */}
                 <ActionModal
                   modalType={modalType}
                   userId={post.postOwner.id}

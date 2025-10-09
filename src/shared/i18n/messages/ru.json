@@ -70,5 +70,5 @@
     "subscription": "Подписка",
     "noAvatar": "Аватар отсутствует"
   },
-  "search": { "search": "Поиск" }
+  "postsList": { "search": "Поиск", "showMore":"показать больше", "hide":"скрыть" }
 }
