@@ -13,21 +13,21 @@ export type TabItem = {
 
 interface TabsProps {
   tabs: TabItem[]
-  defaultValue?: string
+  value:string
   onValueChange?: (value: string) => void
   className?: string
 }
 
 export const TabsComponent = ({
   tabs,
-  defaultValue,
+  value,
   onValueChange,
   className,
 }: TabsProps) => {
   return (
     <Tabs.Root
       className={`${styles.tabsRoot} ${className}`}
-      defaultValue={defaultValue || tabs[0]?.id}
+      value={value || tabs[0]?.id}
       onValueChange={onValueChange}
     >
       <Tabs.List className={styles.tabsList}>
