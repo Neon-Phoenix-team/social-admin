@@ -47,7 +47,8 @@
     },
     "noSubscriptions": "No subscriptions found",
     "noSubscribers": "No subscribers found",
-    "noPhotosUploaded": "The user hasn't uploaded any photos yet"
+    "noPhotosUploaded": "The user hasn't uploaded any photos yet",
+    "userNameMissing": "No Name"
   },
   "settings": {
     "followers": "Followers",
@@ -57,7 +58,8 @@
     "backToUsersList": "Back to Users List",
     "userId": "UserID",
     "profileCreationDate": "Profile Creation Date",
-    "userNotFound": "User not found"
+    "userNotFound": "User not found",
+    "userNameMissing": "No Name"
   },
   "paymentTable": {
     "dateOfPayment": "Date of Payment",
