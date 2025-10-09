@@ -6,8 +6,8 @@ import { useParams } from 'next/navigation'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
 import { useTranslations } from 'next-intl'
 import { useInfScroll } from '@/shared/hooks/useInfScroll'
-import { useEffect } from 'react' // Нужно для логики подгрузки
-import { useInView } from 'react-intersection-observer' // Импорт хука для скролла
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 export const UploadedPhotos = () => {
   const params = useParams()
