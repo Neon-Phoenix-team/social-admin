@@ -79,7 +79,6 @@ export const UsersList = () => {
           value={status}
           onValueChange={onStatusChange}
           options={filterOptions}
-          placeholder={t('filterPlaceholder')}
           idValue={true}
           classNameLabel={s.SelectBox}
         />
