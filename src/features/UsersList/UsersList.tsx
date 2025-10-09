@@ -15,22 +15,21 @@ import Block from '@/shared/assets/icons/components/dropDown/Block'
 import { Button } from '@/shared/ui/Button/Button'
 import { SortDirection } from '@/shared/api/types'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
+import { SelectBox } from '@/shared/ui/Select/SelectBox'
+import { UserBlockStatus } from '@/shared/api/types'
+import { usePagination } from '@/shared/hooks/UsePagination'
+import { useTableSort } from '@/shared/hooks/useTableSort'
+import { Input } from '@/shared/ui/Input/Input'
 
 export type SortConfigType = {
   sortBy: string | null;
   sortDirection: SortDirection | null;
 }
-import { UserSearchInput } from '@/features/Search/UserSearchInput'
-import { SelectBox } from '@/shared/ui/Select/SelectBox'
-import { UserBlockStatus } from '@/shared/api/types'
-import { usePagination } from '@/shared/hooks/UsePagination'
-import { useTableSort } from '@/shared/hooks/useTableSort'
 
 export const UsersList = () => {
   const t = useTranslations('userList')
 
   const { page, itemsCountForPage, onChangePagination } = usePagination()
-
   const { sortConfig, getSortIcon, handleSort } = useTableSort()
 
   const [search, setSearch] = useState('')
@@ -67,13 +66,14 @@ export const UsersList = () => {
 
 
   return (
-    <div>
+    <>
       {/* Группа поиска и фильтрации (Остается на месте) */}
       <div className={s.searchGroup}>
-        <UserSearchInput
-          onSearch={onSearchChange}
+        <Input
+          type="searchType"
           placeholder={t('userSearch')}
-
+          onChangeText={onSearchChange}
+          className={s.search}
         />
         <SelectBox
           value={status}
@@ -81,13 +81,10 @@ export const UsersList = () => {
           options={filterOptions}
           placeholder={t('filterPlaceholder')}
           idValue={true}
-          className={s.SelectBox}
+          classNameLabel={s.SelectBox}
         />
       </div>
-
-
       {loading && <LinearProgress />}
-
       {/* Таблица */}
       <table className={s.usersTable}>
         <thead>
@@ -123,8 +120,8 @@ export const UsersList = () => {
                   <span>{user.id}</span>
                 </div>
               </td>
-              <td>{user.email}</td>
               <td>{user.userName}</td>
+              <td>{user.profile.firstName && user.profile.lastName || 'User'} </td>
               <td>{user.createdAt ? new Date(user.createdAt).toLocaleString() : '-'}</td>
               <td>
                 <Dropdown item={user} />
@@ -138,8 +135,6 @@ export const UsersList = () => {
         )}
         </tbody>
       </table>
-
-
       <Pagination
         page={page}
         itemsCountForPage={itemsCountForPage}
@@ -147,6 +142,6 @@ export const UsersList = () => {
         pagesCount={data?.getUsers.pagination.pagesCount}
         onChange={onChangePagination}
       />
-    </div>
+    </>
   )
 }

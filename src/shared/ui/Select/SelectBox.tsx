@@ -11,6 +11,7 @@ import { SelectOption } from '@/shared/ui/Select/SelectType'
 
 export type SelectBoxProps = {
   className?: string
+  classNameLabel?: string,
   disabled?: boolean
   errorMessage?: FieldError
   height?: boolean
@@ -27,6 +28,7 @@ export type SelectBoxProps = {
 
 export const SelectBox = ({
   className,
+  classNameLabel,
   disabled,
   errorMessage,
   height,
@@ -51,7 +53,7 @@ export const SelectBox = ({
   )
 
   return (
-    <label className={s.label}>
+    <label className={clsx(s.label, classNameLabel)}>
       {label}
       <Select.Root
         value={value}
