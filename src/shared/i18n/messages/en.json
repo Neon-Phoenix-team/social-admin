@@ -17,7 +17,9 @@
     "password": "Password",
     "btnText": "Sign in",
     "placeholder": "Enter your password",
-    "emailError": "Enter the correct email"
+    "emailError": "Enter the correct email",
+    "error": "Invalid email or password",
+    "loading": "loading..."
   },
   "pagination": {
     "show": "Show",

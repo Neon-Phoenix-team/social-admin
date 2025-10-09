@@ -11,7 +11,9 @@
     "password": "Пароль",
     "btnText": "Войти",
     "placeholder": "Введите пароль",
-    "emailError": "Введите корректный email"
+    "emailError": "Введите корректный email",
+    "error": "Неверный email или пароль",
+    "loading": "Загрузка..."
   },
   "menu": {
     "userList": "Пользователи",
