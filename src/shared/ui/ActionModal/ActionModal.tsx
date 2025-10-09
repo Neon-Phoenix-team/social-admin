@@ -70,8 +70,8 @@ export const ActionModal = ({ modalType, onClose, userId, isBan, userName }: Pro
 
       {modalType === 'ban' && (
         <>
-          <SelectBox placeholder={'Reason for bun'} value={reason} onValueChange={setReason}
-            options={banOptions}></SelectBox>
+          <SelectBox classNameLabel={s.select} placeholder={'Reason for bun'} value={reason} onValueChange={setReason}
+                     options={banOptions}></SelectBox>
           {reason === 'Another reason' &&
             <Input className={s.input} onChangeText={setCustomReason} placeholder="Enter your reason" />}
         </>

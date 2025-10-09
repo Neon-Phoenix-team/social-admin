@@ -10,16 +10,17 @@ import {
 } from '@/shared/api/queries/queries.generated'
 import Block from '@/shared/assets/icons/components/dropDown/Block'
 import Block1 from '@/shared/assets/icons/components/dropDown/Block1'
-import { ActionModal } from '@/shared/ui/Button/ActionModal'
+import { ActionModal } from '@/shared/ui/ActionModal/ActionModal'
 import { modalType } from '@/shared/ui/DropDown/DropDown'
 import { Input } from '@/shared/ui/Input/Input'
 import ReadMore from '@/shared/ui/ReadMore/ReadMore'
 import { User } from '@/shared/ui/User/User'
 import { formatDateLocale } from '@/utils/formatDate'
 import { useQuery, useSubscription } from '@apollo/client/react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import s from './Posts.module.scss'
+import { useParams } from 'next/navigation'
 
 export default function Posts() {
   const [modalType, setModalType] = useState<modalType>(null)
@@ -29,8 +30,7 @@ export default function Posts() {
 
   const [search, setSearch] = useState('')
   const [fetching, setFetching] = useState(true)
-  const locale = useLocale()
-  // const locale = 'en'
+  const { locale } = useParams();
   const { data, fetchMore, refetch } = useQuery<
     GetPostsQuery,
     GetPostsQueryVariables

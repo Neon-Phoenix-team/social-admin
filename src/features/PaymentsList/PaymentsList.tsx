@@ -8,17 +8,19 @@ import {
 } from '@/shared/api/queries/queries.generated'
 import { GET_PAYMENTS } from '@/shared/api/queries/queries'
 import { PaymentById } from '@/features/PaymentsList/PaymentsById/PaymentById'
-import { usePaginationAndSort } from '@/shared/hooks/UsePaginationAndSort'
+import { usePagination } from '@/shared/hooks/UsePagination'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
 import { Button } from '@/shared/ui/Button/Button'
 import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Search } from '@/shared/ui/Search/Search'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useTableSort } from '@/shared/hooks/useTableSort'
 
 export const PaymentsList = () => {
 
-  const { itemsCountForPage, page, onChangePagination, sortConfig, handleSort, getSortIcon } = usePaginationAndSort()
+  const { itemsCountForPage, page, onChangePagination } = usePagination()
+  const { sortConfig, handleSort, getSortIcon} = useTableSort()
 
   const [searchTerm, setSearchTerm] = useState('')
 

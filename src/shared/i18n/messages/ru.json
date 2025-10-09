@@ -5,6 +5,16 @@
       "registerText": "Регистрация"
     }
   },
+  "authForm": {
+    "text": "Вход",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "btnText": "Войти",
+    "placeholder": "Введите пароль",
+    "emailError": "Введите корректный email",
+    "error": "Неверный email или пароль",
+    "loading": "Загрузка..."
+  },
   "menu": {
     "userList": "Пользователи",
     "statistics": "Статистика",
@@ -35,7 +45,6 @@
       "unban": "Разблокировать",
       "info": "Больше информации"
     },
-
     "noSubscriptions": "Подписки отсутствуют",
     "noSubscribers": "Подписчики отсутствуют",
     "noPhotosUploaded": "Пользователь пока не загрузил ни одной фотографии"
@@ -70,5 +79,6 @@
     "subscription": "Подписка",
     "noAvatar": "Аватар отсутствует"
   },
+  "goToMain": "На главную страницу",
   "postsList": { "search": "Поиск", "showMore":"показать больше", "hide":"скрыть" }
 }

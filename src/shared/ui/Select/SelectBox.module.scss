@@ -3,7 +3,6 @@
 
 // === Label and Error ===
 .label {
-  width: 100%;
   @include fontStyle($size: 14px, $color: color($light, 900), $line-height: 170%);
 }
 
