@@ -10,7 +10,7 @@ import {
 } from '@/shared/api/queries/queries.generated'
 import Block from '@/shared/assets/icons/components/dropDown/Block'
 import Block1 from '@/shared/assets/icons/components/dropDown/Block1'
-import { ActionModal } from '@/shared/ui/Button/ActionModal'
+import { ActionModal } from '@/shared/ui/ActionModal/ActionModal'
 import { modalType } from '@/shared/ui/DropDown/DropDown'
 import { Input } from '@/shared/ui/Input/Input'
 import { User } from '@/shared/ui/User/User'
