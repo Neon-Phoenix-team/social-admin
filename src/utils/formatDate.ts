@@ -4,7 +4,7 @@ export const formatDateLocale = (
   date: Date | string,
   locale: 'en' | 'ru' = 'en'
 ) => {
-  const locales = { en: enUS, ru }
+  const locales = { en:enUS, ru }
 
   return formatDistanceToNowStrict(new Date(date), {
     addSuffix: true,

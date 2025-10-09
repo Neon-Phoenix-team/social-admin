@@ -307,39 +307,39 @@ export const GET_PAYMENTS_BY_USER_QUERY = gql`
 //   }
 // `
 //
-// export const GET_PAYMENTS = gql`
-//   query GetPayments(
-//     $pageNumber: Int = 6
-//     $pageSize: Int
-//     $sortBy: String = "createdAt"
-//     $sortDirection: SortDirection = desc
-//     $searchTerm: String
-//   ) {
-//     getPayments(
-//       pageNumber: $pageNumber
-//       pageSize: $pageSize
-//       sortBy: $sortBy
-//       sortDirection: $sortDirection
-//       searchTerm: $searchTerm
-//     ) {
-//       items {
-//         id
-//         userId
-//         userName
-//         avatars {
-//           url
-//           width
-//           height
-//           fileSize
-//         }
-//       }
-//       page
-//       pageSize
-//       totalCount
-//       pagesCount
-//     }
-//   }
-// `
+export const GET_PAYMENTS = gql`
+  query GetPayments(
+    $pageNumber: Int = 6
+    $pageSize: Int
+    $sortBy: String = "createdAt"
+    $sortDirection: SortDirection = desc
+    $searchTerm: String
+  ) {
+    getPayments(
+      pageNumber: $pageNumber
+      pageSize: $pageSize
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+      searchTerm: $searchTerm
+    ) {
+      items {
+        id
+        userId
+        userName
+        avatars {
+          url
+          width
+          height
+          fileSize
+        }
+      }
+      page
+      pageSize
+      totalCount
+      pagesCount
+    }
+  }
+`
 //
 // export const GET_PAYMENT_BY_ID = gql`
 //   query GetPaymentsByIdUser($userId: Int!) {

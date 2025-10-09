@@ -16,7 +16,10 @@
     "email": "Email",
     "password": "Password",
     "btnText": "Sign in",
-    "placeholder": "Input your password"
+    "placeholder": "Enter your password",
+    "emailError": "Enter the correct email",
+    "error": "Invalid email or password",
+    "loading": "loading..."
   },
   "pagination": {
     "show": "Show",
@@ -76,5 +79,6 @@
     "subscription": "Subscription",
     "noAvatar": "Avatar is missing"
   },
+  "goToMain": "Go to main page",
   "search": { "search": "Search" }
 }
