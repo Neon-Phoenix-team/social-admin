@@ -5,12 +5,14 @@ import { ApolloClient, InMemoryCache } from '@apollo/client-integration-nextjs'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { createClient } from 'graphql-ws'
+import { basicAuthVar } from '@/shared/api/client'
 
 export function makeClient() {
+  const credentials = basicAuthVar();
   const httpLink = new HttpLink({
     uri: process.env.NEXT_PUBLIC_GRAPH_API,
     headers: {
-      Authorization: 'Basic ' + btoa('admin@gmail.com:admin'),
+      Authorization: credentials ? `Basic ${credentials}` : '',
     },
   })
 
@@ -21,7 +23,7 @@ export function makeClient() {
           createClient({
             url: process.env.NEXT_PUBLIC_GRAPH_WS!,
             connectionParams: {
-              Authorization: 'Basic ' + btoa('admin@gmail.com:admin'),
+              Authorization: credentials ? `Basic ${credentials}` : '',
             },
           })
         )

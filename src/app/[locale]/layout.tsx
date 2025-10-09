@@ -4,7 +4,6 @@ import { NextIntlClientProvider } from 'next-intl'
 import { LayoutContent } from '@/shared/ui/LayoutContent/LayoutContent'
 import { ApolloWrapper } from '@/shared/api/ApolloWrapper'
 
-
 export default async function RootLayout({
                                            children,
                                            params,
@@ -15,6 +14,9 @@ export default async function RootLayout({
   const { locale } = await params
   return (
     <html lang={locale}>
+    <head>
+      <title>Social Admin</title>
+    </head>
     <body>
     <ApolloWrapper>
       <NextIntlClientProvider>
