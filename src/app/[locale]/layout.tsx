@@ -17,12 +17,11 @@ export default async function RootLayout({
     <html lang={locale}>
     <body>
     <ApolloWrapper>
-    <NextIntlClientProvider>
-      <LayoutContent >{children}</LayoutContent>
-    </NextIntlClientProvider>
-      </ApolloWrapper >
+      <NextIntlClientProvider>
+        <LayoutContent>{children}</LayoutContent>
+      </NextIntlClientProvider>
+    </ApolloWrapper>
     </body>
-
     </html>
   )
 }
