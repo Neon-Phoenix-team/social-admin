@@ -15,10 +15,12 @@ import { Pagination } from '@/shared/ui/Pagination/Pagination'
 import { Search } from '@/shared/ui/Search/Search'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { useTableSort } from '@/shared/hooks/useTableSort'
 
 export const PaymentsList = () => {
 
-  const { itemsCountForPage, page, onChangePagination, sortConfig, handleSort, getSortIcon } = usePagination()
+  const { itemsCountForPage, page, onChangePagination } = usePagination()
+  const { sortConfig, handleSort, getSortIcon} = useTableSort()
 
   const [searchTerm, setSearchTerm] = useState('')
 

@@ -1,10 +1,8 @@
 'use client'
 
 import { useQuery } from '@apollo/client/react'
-import {
-  GetPaymentsByIdUserQuery, GetPaymentsByIdUserQueryVariables,
-} from '@/shared/api/queries/queries.generated'
 import { GET_PAYMENTS_BY_USER_QUERY } from '@/shared/api/queries/queries'
+import { GetPaymentsByUserQuery, GetPaymentsByUserQueryVariables } from '@/shared/api/queries/queries.generated'
 
 type PropsType = {
   userId: number
@@ -25,16 +23,16 @@ const SUBSCRIPTION_LABELS = {
   DAY: '1 day',
   WEEKLY: '7 days',
   MONTHLY: '30 days',
-} as const;
+} as const
 
 const CURRENCY_SYMBOLS = {
   USD: '$',
   EUR: '€',
-} as const;
+} as const
 
 export const PaymentById = ({ userId }: PropsType) => {
 
-  const { data } = useQuery<GetPaymentsByIdUserQuery, GetPaymentsByIdUserQueryVariables>(GET_PAYMENTS_BY_USER_QUERY, {
+  const { data } = useQuery<GetPaymentsByUserQuery,GetPaymentsByUserQueryVariables >(GET_PAYMENTS_BY_USER_QUERY, {
     variables: { userId: userId },
   })
 
