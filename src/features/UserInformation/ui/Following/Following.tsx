@@ -63,7 +63,6 @@ export const Following = () => {
                 {getSortIcon('userName')}
               </Button>
             </div>
-
           </th>
           <th>
             <div className={s.thWrapper}>
@@ -82,8 +81,11 @@ export const Following = () => {
           <tr key={user.id}>
             <td>{user.userId}</td>
             <td>{user.userName}</td>
-            <td>{`${user.firstName} ${user.lastName}`}</td>
-            <td>{new Date(user.createdAt).toLocaleDateString()}</td>
+            <td>{user.firstName && user.lastName
+              ? `${user.firstName} ${user.lastName}`
+              : t('userNameMissing')}
+              </td>
+                <td>{new Date(user.createdAt).toLocaleDateString()}</td>
           </tr>
         ))}
         </tbody>
