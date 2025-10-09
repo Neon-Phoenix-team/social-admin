@@ -13,9 +13,11 @@ import Block1 from '@/shared/assets/icons/components/dropDown/Block1'
 import { ActionModal } from '@/shared/ui/ActionModal/ActionModal'
 import { modalType } from '@/shared/ui/DropDown/DropDown'
 import { Input } from '@/shared/ui/Input/Input'
+import ReadMore from '@/shared/ui/ReadMore/ReadMore'
 import { User } from '@/shared/ui/User/User'
 import { formatDateLocale } from '@/utils/formatDate'
 import { useQuery, useSubscription } from '@apollo/client/react'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import s from './Posts.module.scss'
 import { useParams } from 'next/navigation'
@@ -29,7 +31,6 @@ export default function Posts() {
   const [search, setSearch] = useState('')
   const [fetching, setFetching] = useState(true)
   const { locale } = useParams();
-  console.log(typeof locale)
   const { data, fetchMore, refetch } = useQuery<
     GetPostsQuery,
     GetPostsQueryVariables
@@ -116,13 +117,13 @@ export default function Posts() {
       }).then(() => setFetching(false))
     }
   }, [fetching, search])
-
+  const t = useTranslations('search')
   return (
     <>
       <div className={s.inputWrapper}>
         <Input
           type="searchType"
-          placeholder="Search"
+          placeholder={t('search')}
           onChangeText={searchHandler}
         />
       </div>
@@ -136,9 +137,6 @@ export default function Posts() {
                   <User
                     url={post.postOwner.avatars?.[1]?.url}
                     userName={post.postOwner.userName}
-                    userId={post.ownerId}
-                    locale={locale as 'en' | 'ru'}
-                    style={{ marginRight: 'auto' }}
                   />
                   {post.userBan ? (
                     <Block1
@@ -155,7 +153,8 @@ export default function Posts() {
                 <p className={s.time}>
                   {formatDateLocale(post.createdAt, locale as 'en' | 'ru')}
                 </p>
-                <p className={s.description}>{post.description}</p>
+                <ReadMore text={post.description}></ReadMore>
+                {/* <p className={s.description}>{post.description}</p> */}
                 <ActionModal
                   modalType={modalType}
                   userId={post.postOwner.id}

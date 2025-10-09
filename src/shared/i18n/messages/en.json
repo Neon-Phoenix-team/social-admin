@@ -79,5 +79,6 @@
     "subscription": "Subscription",
     "noAvatar": "Avatar is missing"
   },
-  "goToMain": "Go to main page"
+  "goToMain": "Go to main page",
+  "search": { "search": "Search" }
 }
