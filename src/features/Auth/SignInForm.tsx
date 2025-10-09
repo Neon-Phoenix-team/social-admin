@@ -16,13 +16,13 @@ import {
 import { useTranslations } from 'next-intl'
 import { FormValues, getSchema } from '@/features/Auth/lib/schemas'
 import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
+import { useState } from 'react'
 
 
 export const SignInForm = () => {
   const router = useRouter()
   const [loginAdmin, { loading }] = useMutation<LoginAdminMutation, LoginAdminMutationVariables>(LOGIN_ADMIN)
   const t = useTranslations('authForm')
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const {
     register,
@@ -39,7 +39,6 @@ export const SignInForm = () => {
       const { data: response } = await loginAdmin({ variables: data })
       if (response?.loginAdmin?.logged) {
         isAdminVar(true)
-        setIsLoggedIn(true); // скрываем форму моментально
         const credentials = btoa(`${data.email}:${data.password}`)
         basicAuthVar(credentials)
         router.push('/userList')
