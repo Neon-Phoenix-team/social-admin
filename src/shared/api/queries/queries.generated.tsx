@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Types from '../types';
 
 export type LoginAdminMutationVariables = Types.Exact<{

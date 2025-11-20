@@ -1,22 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import {useRouter} from 'next/navigation'
+import {useForm} from 'react-hook-form'
+import {zodResolver} from '@hookform/resolvers/zod'
 import styles from './SignInForm.module.scss'
-import { Input } from '@/shared/ui/Input/Input'
-import { Button } from '@/shared/ui/Button/Button'
-import { basicAuthVar, isAdminVar } from '@/shared/api/client'
-import { useMutation } from '@apollo/client/react'
-import { LOGIN_ADMIN } from '@/shared/api/queries/queries'
-import {
-  LoginAdminMutation,
-  LoginAdminMutationVariables,
-} from '@/shared/api/queries/queries.generated'
-import { useTranslations } from 'next-intl'
-import { FormValues, getSchema } from '@/features/Auth/lib/schemas'
-import { LinearProgress } from '@/shared/ui/LinearProgress/LinearProgress'
-import { useState } from 'react'
+import {Input} from '@/shared/ui/Input/Input'
+import {Button} from '@/shared/ui/Button/Button'
+import {basicAuthVar, isAdminVar} from '@/shared/api/client'
+import {useMutation} from '@apollo/client/react'
+import {LOGIN_ADMIN} from '@/shared/api/queries/queries'
+import {LoginAdminMutation, LoginAdminMutationVariables,} from '@/shared/api/queries/queries.generated'
+import {useTranslations} from 'next-intl'
+import {FormValues, getSchema} from '@/features/Auth/lib/schemas'
+import {LinearProgress} from '@/shared/ui/LinearProgress/LinearProgress'
 
 
 export const SignInForm = () => {
